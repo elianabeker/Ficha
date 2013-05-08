@@ -1,0 +1,212 @@
+<?php
+
+namespace Proyecto\TecnicoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ingresos
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Ingresos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Fecha", type="date")
+     */
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ActuacionSimple", type="string", length=255)
+     */
+    private $actuacionSimple;
+
+     /**
+     * @ORM\OneToOne(targetEntity="Bien")
+     */
+    private $bien;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Observaciones", type="string", length=255)
+     */
+    private $observaciones;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Estado", type="integer")
+     */
+    private $estado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FechaSalida", type="date")
+     */
+    private $fechaSalida;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     * @return Ingresos
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+    
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime 
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set actuacionSimple
+     *
+     * @param string $actuacionSimple
+     * @return Ingresos
+     */
+    public function setActuacionSimple($actuacionSimple)
+    {
+        $this->actuacionSimple = $actuacionSimple;
+    
+        return $this;
+    }
+
+    /**
+     * Get actuacionSimple
+     *
+     * @return string 
+     */
+    public function getActuacionSimple()
+    {
+        return $this->actuacionSimple;
+    }
+
+    /**
+     * Set bien
+     *
+     * @param string $bien
+     * @return Ingresos
+     */
+    public function setBien($bien)
+    {
+        $this->bien = $bien;
+    
+        return $this;
+    }
+
+    /**
+     * Get bien
+     *
+     * @return string 
+     */
+    public function getBien()
+    {
+        return $this->bien;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return Ingresos
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param integer $estado
+     * @return Ingresos
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return integer 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set fechaSalida
+     *
+     * @param \DateTime $fechaSalida
+     * @return Ingresos
+     */
+    public function setFechaSalida($fechaSalida)
+    {
+        $this->fechaSalida = $fechaSalida;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaSalida
+     *
+     * @return \DateTime 
+     */
+    public function getFechaSalida()
+    {
+        return $this->fechaSalida;
+    }
+}
