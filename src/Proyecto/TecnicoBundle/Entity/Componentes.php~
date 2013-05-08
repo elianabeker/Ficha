@@ -5,12 +5,12 @@ namespace Proyecto\TecnicoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Trabajos
+ * Componentes
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Trabajos
+class Componentes
 {
     /**
      * @var integer
@@ -43,7 +43,7 @@ class Trabajos
      * Set descripcion
      *
      * @param string $descripcion
-     * @return Trabajos
+     * @return Componentes
      */
     public function setDescripcion($descripcion)
     {

@@ -5,12 +5,12 @@ namespace Proyecto\TecnicoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Trabajos
+ * Dependencia
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Trabajos
+class Dependencia
 {
     /**
      * @var integer
@@ -24,9 +24,9 @@ class Trabajos
     /**
      * @var string
      *
-     * @ORM\Column(name="Descripcion", type="string", length=255)
+     * @ORM\Column(name="Nombre", type="string", length=255)
      */
-    private $descripcion;
+    private $nombre;
 
 
     /**
@@ -40,25 +40,25 @@ class Trabajos
     }
 
     /**
-     * Set descripcion
+     * Set nombre
      *
-     * @param string $descripcion
-     * @return Trabajos
+     * @param string $nombre
+     * @return Dependencia
      */
-    public function setDescripcion($descripcion)
+    public function setNombre($nombre)
     {
-        $this->descripcion = $descripcion;
+        $this->nombre = $nombre;
     
         return $this;
     }
 
     /**
-     * Get descripcion
+     * Get nombre
      *
      * @return string 
      */
-    public function getDescripcion()
+    public function getNombre()
     {
-        return $this->descripcion;
+        return $this->nombre;
     }
 }
