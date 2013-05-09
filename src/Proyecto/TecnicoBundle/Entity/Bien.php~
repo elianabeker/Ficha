@@ -40,6 +40,11 @@ class Bien
      * @ORM\Column(name="Descripcion", type="string", length=255)
      */
     private $descripcion;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Dependencia")
+     */
+    private $dependencia;
 
 
     /**

@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Ficha creation</h1>
+
+    <form action="{{ path('ficha_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_row(form.fecha) }}
+        {{ form_row(form.solicitado) }}
+        <h3>Bienes</h3>
+            <ul class="bien">
+             {% for bien in form.bien %}
+                <li>{{ form_row(bien.tipoBien) }}</li>
+                <li>{{ form_row(bien.nroPat) }}</li>
+                <li>{{ form_row(bien.descripcion) }}</li>
+                <li>{{ form_row(bien.dependencia) }}</li>
+             {% endfor %}
+            </ul>
+        {{ form_row(form.trabajo) }}
+        {{ form_row(form.componentes) }}
+        {{ form_row(form.realizado) }}
+         {{ form_rest(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ficha') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

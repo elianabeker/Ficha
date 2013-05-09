@@ -3,6 +3,7 @@
 namespace Proyecto\TecnicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Ficha
@@ -99,7 +100,7 @@ class Ficha
      * @param string $bien
      * @return Ficha
      */
-    public function setBien($bien)
+    public function setBien(ArrayCollection $bien)
     {
         $this->bien = $bien;
     
@@ -212,8 +213,9 @@ class Ficha
      */
     public function __construct()
     {
-        $this->trabajo = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->componentes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->trabajo = new ArrayCollection();
+        $this->componentes = new ArrayCollection();
+        $this->bien = new ArrayCollection();
     }
     
     /**
