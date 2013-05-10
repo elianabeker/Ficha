@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<title>Ficha Tecnica Web</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="{{ asset('bundles/proyectotecnico/css/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('bundles/proyectotecnico/css/bootstrap-responsive.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/mos-css/mos-style.css') }}"> <!--pemanggilan file css-->
+</head>
+<body>
+<div id="header">
+	<div class="inHeader">
+		<div class="mosAdmin">
+		 Bienvenido Administrador<br>
+		</div>
+	</div>
+</div>
+
+<div id="wrapper">
+	<div id="leftBar">
+	<ul>
+		<li><a href="{{path('ficha')}}">Ingresos</a></li>
+		<li><a href="{{path('ficha')}}">Ficha</a></li>
+		<li><a href="{{path('ficha')}}">Egresos</a></li>
+	</ul>
+	</div>
+	<div id="rightContent">
+            <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+          </body>
+	</div>
+		
+	<div class="clear"></div>
+<div id="footer">
+	Camara de Diputados de la Provincia del Chaco
+                      <br> José María Paz 170
+         
+</div>
+</div>
+</body>
 </html>

@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Ficha creation</h1>
+    <h1>Ficha Nueva</h1>
 
     <form action="{{ path('ficha_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.fecha) }}
