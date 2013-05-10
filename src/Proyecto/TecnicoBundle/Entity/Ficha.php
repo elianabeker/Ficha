@@ -30,7 +30,7 @@ class Ficha
     private $solicitado;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
     */
     private $bien;
 

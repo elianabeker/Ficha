@@ -19,9 +19,9 @@
             <tr>
                 <td><a href="{{ path('ficha_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.solicitado }}</td>
-                {% for bienes in form.bien %}
-                      <td>{{ entity.bien.nroPat}}</td>
-                 {% endfor %}     
+                {% for bien in entity.bien %}
+                   <td>{{ entity.bien.descripcion }}</td>
+                {% endfor %}     
                 <td>{{ entity.realizado }}</td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
