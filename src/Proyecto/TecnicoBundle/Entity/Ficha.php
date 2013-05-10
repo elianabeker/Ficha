@@ -30,10 +30,8 @@ class Ficha
     private $solicitado;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Bien", type="string", length=255)
-     */
+     * @ORM\OneToOne(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
+    */
     private $bien;
 
     /**
@@ -97,14 +95,22 @@ class Ficha
     /**
      * Set bien
      *
-     * @param string $bien
+     * @param string $bienes
      * @return Ficha
      */
     public function setBien(ArrayCollection $bien)
     {
         $this->bien = $bien;
-    
-        return $this;
+    foreach ($bien as $bienes) {
+            $bienes->setFicha($this);
+        }
+        
+        
+//         foreach ($bien as $bienes) {
+//        $bienes->addBien($this);
+//    }
+//
+//    $this->bien = $bien;
     }
 
     /**

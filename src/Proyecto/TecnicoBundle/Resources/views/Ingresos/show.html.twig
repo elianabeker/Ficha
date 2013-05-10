@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Ficha</h1>
+    <h1>Ingresos</h1>
 
     <table class="record_properties">
         <tbody>
@@ -10,39 +10,41 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Solicitado</th>
-                <td>{{ entity.solicitado }}</td>
-            </tr>
-            <tr>
-                <th>Bien</th>
-                {% for bien in entity.bien %}
-                   <td>{{ bien.descripcion }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th>Realizado</th>
-                <td>{{ entity.realizado }}</td>
-            </tr>
-            <tr>
                 <th>Fecha</th>
                 <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Actuacionsimple</th>
+                <td>{{ entity.actuacionSimple }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ entity.observaciones }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+            <tr>
+                <th>Fechasalida</th>
+                <td>{{ entity.fechaSalida|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('ficha') }}">
+        <a href="{{ path('ingresos') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('ficha_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
     <li>
-        <form action="{{ path('ficha_delete', { 'id': entity.id }) }}" method="post">
+        <form action="{{ path('ingresos_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button type="submit">Delete</button>
