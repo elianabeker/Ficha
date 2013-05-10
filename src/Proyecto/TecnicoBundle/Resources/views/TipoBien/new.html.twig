@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>TipoBien creation</h1>
+    <h1>Cargar un tipo de Bien</h1>
 
     <form action="{{ path('tipobien_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
