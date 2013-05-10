@@ -28,7 +28,12 @@ class Ficha
      * @ORM\Column(name="Solicitado", type="string", length=255)
      */
     private $solicitado;
-
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Dependencia")
+     */
+    private $dependencia;
+    
     /**
      * @ORM\OneToMany(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
     */
@@ -40,7 +45,7 @@ class Ficha
     private $trabajo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Componentes", mappedBy="ficha")
+     * @ORM\OneToMany(targetEntity="Componentes", mappedBy="ficha", cascade={"persist"})
      */
     private $componentes;
 
@@ -268,5 +273,28 @@ class Ficha
     public function removeComponente(\Proyecto\TecnicoBundle\Entity\Componentes $componentes)
     {
         $this->componentes->removeElement($componentes);
+    }
+    
+        /**
+     * Set dependencia
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
+     * @return Bien
+     */
+    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
+    {
+        $this->dependencia = $dependencia;
+    
+        return $this;
+    }
+
+    /**
+     * Get dependencia
+     *
+     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
+     */
+    public function getDependencia()
+    {
+        return $this->dependencia;
     }
 }

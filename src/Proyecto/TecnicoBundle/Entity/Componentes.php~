@@ -21,14 +21,19 @@ class Componentes
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Descripcion", type="string", length=255)
+  
+     /**
+     * @ORM\ManyToOne(targetEntity="Ficha", inversedBy="bienes")
+     * @ORM\JoinColumn(name="ficha_id", referencedColumnName="id")
      */
-    private $descripcion;
-
-
+    private $ficha;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="TipoComponentes")
+     * @ORM\JoinColumn(name="tipoComponente_id", referencedColumnName="id")
+     */
+    private $tipoComponentes;
+    
     /**
      * Get id
      *
@@ -39,26 +44,5 @@ class Componentes
         return $this->id;
     }
 
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     * @return Componentes
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-    
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string 
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
-    }
+   
 }

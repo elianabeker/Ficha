@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Solicitado</th>
                 <th>Bien</th>
+                <th>Nro Patrimonio</th>
                 <th>Realizado</th>
                 <th>Fecha</th>
                 <th>Actions</th>
@@ -19,9 +20,13 @@
             <tr>
                 <td><a href="{{ path('ficha_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.solicitado }}</td>
-                {% for bien in entity.bien %}
-                   <td>{{ entity.bien.descripcion }}</td>
-                {% endfor %}     
+               {% for bien in entity.bien %}
+                 <tr>
+                   <td>{{ bien.nroPat }}</td>
+                   <td>{{ bien.descripcion }}</td>
+                   <tr>
+             
+                {% endfor %}   
                 <td>{{ entity.realizado }}</td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>

@@ -6,20 +6,19 @@
     <form action="{{ path('ficha_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.fecha) }}
         {{ form_row(form.solicitado) }}
+        {{ form_row(form.dependencia) }}
     
-          <div><ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> 
-{#             {% for bien in form.bien %}
+          <div>
+              <ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> </ul>
+          {# {% for bien in form.bien %}
                 <li>{{ form_row(bien.tipoBien) }}</li>
                 <li>{{ form_row(bien.nroPat) }}</li>
-                <li>{{ form_row(bien.descripcion) }}</li>
-                <li>{{ form_row(bien.dependencia) }}</li>         
-             {% endfor %}
-                    
-         #}           
-            </ul></div>
-        <a id="add_bien_link" href="#">Agregar otro</a>
+                <li>{{ form_row(bien.descripcion) }}</li>    
+             {% endfor %} #}
+           </div> 
+
         {{ form_row(form.trabajo) }}
-        {{ form_row(form.componentes) }}
+        {{ form_row(form.componentes)}}
         {{ form_row(form.realizado) }}
         {{ form_row(form._token) }}
       {#   {{ form_rest(form) }}#}
@@ -44,7 +43,7 @@
         // configura una enlace "Agregar un bien"
         
     //var $addBienLink = $('#add_bien_link');
-    var $addBienLink = $('<a href="#" class="add_bien_link">Agregar otro</a>');  
+    var $addBienLink = $('<a href="#" class="add_bien_link">Agregar Bien</a>');  
     var $newLinkLi = $('<li></li>').append($addBienLink);
 
         jQuery(document).ready(function() 

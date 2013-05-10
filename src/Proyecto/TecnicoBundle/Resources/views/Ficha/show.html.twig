@@ -14,11 +14,14 @@
                 <td>{{ entity.solicitado }}</td>
             </tr>
             <tr>
-                <th>Bien</th>
-                {% for bien in entity.bien %}
-                   <td>{{ bien.descripcion }}</td>
+                <th>Bien/Bienes</th>
+                   {% for bien in entity.bien %}
+                    <tr>
+                        <td>{{ bien.nroPat }}</td>
+                        <td>{{ bien.descripcion }}</td>
+                    </tr>
                 {% endfor %}
-            </tr>
+            </tr>   
             <tr>
                 <th>Realizado</th>
                 <td>{{ entity.realizado }}</td>
