@@ -35,8 +35,9 @@ class Ingresos
      */
     private $actuacionSimple;
 
-     /**
-     * @ORM\OneToOne(targetEntity="Bien")
+    /**
+     * @ORM\ManyToOne(targetEntity="Bien", mappedBy="ingreso", cascade={"persist"})
+     * @ORM\JoinColumn(name="bieb_id", referencedColumnName="id")
      */
     private $bien;
 
@@ -52,7 +53,7 @@ class Ingresos
      *
      * @ORM\Column(name="Estado", type="integer")
      */
-    private $estado;
+    private $estado=1;
 
     /**
      * @var \DateTime
@@ -208,5 +209,35 @@ class Ingresos
     public function getFechaSalida()
     {
         return $this->fechaSalida;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bien = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add bien
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
+     * @return Ingresos
+     */
+    public function addBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
+    {
+        $this->bien[] = $bien;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bien
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
+     */
+    public function removeBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
+    {
+        $this->bien->removeElement($bien);
     }
 }

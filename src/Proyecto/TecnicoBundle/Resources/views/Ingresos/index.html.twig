@@ -1,36 +1,36 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Listar Fichas</h1>
+    <h1>Ingresos list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Solicitado</th>
-                <th>Bien</th>
-                <th>Realizado</th>
                 <th>Fecha</th>
+                <th>Actuacionsimple</th>
+                <th>Observaciones</th>
+                <th>Estado</th>
+                <th>Fechasalida</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('ficha_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.solicitado }}</td>
-                {% for bienes in form.bien %}
-                      <td>{{ entity.bien.nroPat}}</td>
-                 {% endfor %}     
-                <td>{{ entity.realizado }}</td>
+                <td><a href="{{ path('ingresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.actuacionSimple }}</td>
+                <td>{{ entity.observaciones }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>{% if entity.fechaSalida %}{{ entity.fechaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('ficha_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('ingresos_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('ficha_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('ingresos_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -41,7 +41,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('ficha_new') }}">
+            <a href="{{ path('ingresos_new') }}">
                 Create a new entry
             </a>
         </li>

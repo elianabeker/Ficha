@@ -6,19 +6,24 @@
     <form action="{{ path('ficha_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.fecha) }}
         {{ form_row(form.solicitado) }}
-        <h3>Bienes</h3>
-            <ul class="bien">
-             {% for bien in form.bien %}
+    
+          <div><ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> 
+{#             {% for bien in form.bien %}
                 <li>{{ form_row(bien.tipoBien) }}</li>
                 <li>{{ form_row(bien.nroPat) }}</li>
                 <li>{{ form_row(bien.descripcion) }}</li>
-                <li>{{ form_row(bien.dependencia) }}</li>
+                <li>{{ form_row(bien.dependencia) }}</li>         
              {% endfor %}
-            </ul>
+                    
+         #}           
+            </ul></div>
+        <a id="add_bien_link" href="#">Agregar otro</a>
         {{ form_row(form.trabajo) }}
         {{ form_row(form.componentes) }}
         {{ form_row(form.realizado) }}
-         {{ form_rest(form) }}
+        {{ form_row(form._token) }}
+      {#   {{ form_rest(form) }}#}
+       
         <p>
             <button type="submit">Create</button>
         </p>
@@ -31,4 +36,55 @@
         </a>
     </li>
 </ul>
+    
+    <script type="text/javascript">
+        // Obtiene la ul que contiene la colección de bienes
+        var collectionHolder = $('ul.bien');
+
+        // configura una enlace "Agregar un bien"
+        
+    //var $addBienLink = $('#add_bien_link');
+    var $addBienLink = $('<a href="#" class="add_bien_link">Agregar otro</a>');  
+    var $newLinkLi = $('<li></li>').append($addBienLink);
+
+        jQuery(document).ready(function() 
+            {
+            // Añade el ancla "Agregar una etiqueta" y las etiquetas li y ul
+            collectionHolder.append($newLinkLi);
+
+            // cuenta las entradas actuales en el formulario (p. ej. 2),
+            // la usa como índice al insertar un nuevo elemento (p. ej. 2)
+            collectionHolder.data('index', collectionHolder.find(':input').length);
+
+            $addBienLink.on('click', function(e) 
+                {
+                // evita crear el enlace con una "#" en la URL
+                e.preventDefault();
+
+                // añade una nueva etiqueta form (ve el siguiente bloque de código)
+                addBienForm(collectionHolder, $newLinkLi);
+                });
+            });
+            
+            function addBienForm( collectionHolder, $newLinkLi) 
+                {
+                // Obtiene los datos del prototipo explicado anteriormente
+                var prototype = collectionHolder.data('prototype');
+
+                // Consigue el nuevo índice
+                var index = collectionHolder.data('index');
+
+                // Sustituye el '__name__' en el prototipo HTML para que
+                // en su lugar sea un número basado en cuántos elementos hay
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // Incrementa en uno el índice para el siguiente elemento
+                collectionHolder.data('index', index + 1);
+
+                // Muestra el formulario en la página en un elemento li,
+                // antes del enlace 'Agregar una etiqueta'
+                var $newFormLi = $('<li></li>').append(newForm);
+                $newLinkLi.before($newFormLi);
+                }   
+       </script>  
 {% endblock %}

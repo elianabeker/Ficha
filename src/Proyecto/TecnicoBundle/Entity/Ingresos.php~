@@ -35,9 +35,9 @@ class Ingresos
      */
     private $actuacionSimple;
 
-     /**
-     * @ORM\OneToOne(targetEntity="Bien")
-     */
+    /**
+     * @ORM\OneToMany(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
+    */
     private $bien;
 
     /**
@@ -52,7 +52,7 @@ class Ingresos
      *
      * @ORM\Column(name="Estado", type="integer")
      */
-    private $estado;
+    private $estado=1;
 
     /**
      * @var \DateTime

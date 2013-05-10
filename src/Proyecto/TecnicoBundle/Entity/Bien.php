@@ -45,6 +45,12 @@ class Bien
      * @ORM\ManyToOne(targetEntity="Dependencia")
      */
     private $dependencia;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Ficha", inversedBy="bienes")
+     * @ORM\JoinColumn(name="ficha_id", referencedColumnName="id")
+     */
+    private $ficha;
 
 
     /**
@@ -147,5 +153,30 @@ class Bien
     public function getDependencia()
     {
         return $this->dependencia;
+    }
+    
+
+
+    /**
+     * Set ficha
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Ficha $ficha
+     * @return Bien
+     */
+    public function setFicha(\Proyecto\TecnicoBundle\Entity\Ficha $ficha = null)
+    {
+        $this->ficha = $ficha;
+    
+        return $this;
+    }
+
+    /**
+     * Get ficha
+     *
+     * @return \Proyecto\TecnicoBundle\Entity\Ficha 
+     */
+    public function getFicha()
+    {
+        return $this->ficha;
     }
 }
