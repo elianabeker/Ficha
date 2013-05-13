@@ -10,16 +10,12 @@
     
           <div>
               <ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> </ul>
-          {# {% for bien in form.bien %}
-                <li>{{ form_row(bien.tipoBien) }}</li>
-                <li>{{ form_row(bien.nroPat) }}</li>
-                <li>{{ form_row(bien.descripcion) }}</li>    
-             {% endfor %} #}
            </div> 
 
         {{ form_row(form.trabajo) }}
         {{ form_row(form.componentes)}}
         {{ form_row(form.realizado) }}
+        {{ form_row(form.observaciones) }}    
         {{ form_row(form._token) }}
       {#   {{ form_rest(form) }}#}
        

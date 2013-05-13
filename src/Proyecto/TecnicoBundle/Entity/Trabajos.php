@@ -27,7 +27,7 @@ class Trabajos
      * @ORM\Column(name="Descripcion", type="string", length=255)
      */
     private $descripcion;
-
+    
 
     /**
      * Get id
@@ -66,4 +66,4 @@ class Trabajos
     {
         return $this->descripcion;
     }
-}
+    }

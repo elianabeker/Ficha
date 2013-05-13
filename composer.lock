@@ -1227,12 +1227,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MWSimple/CrudGeneratorBundle.git",
-                "reference": "b40bbd17c69d1c11200ec4a705a3c8e0ac19afb2"
+                "reference": "6389317b57bb18baaa98487009f281543cbbd2ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MWSimple/CrudGeneratorBundle/zipball/b40bbd17c69d1c11200ec4a705a3c8e0ac19afb2",
-                "reference": "b40bbd17c69d1c11200ec4a705a3c8e0ac19afb2",
+                "url": "https://api.github.com/repos/MWSimple/CrudGeneratorBundle/zipball/6389317b57bb18baaa98487009f281543cbbd2ff",
+                "reference": "6389317b57bb18baaa98487009f281543cbbd2ff",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
                 "crud",
                 "generator"
             ],
-            "time": "2013-05-10 14:48:43"
+            "time": "2013-05-10 16:08:22"
         },
         {
             "name": "phpoption/phpoption",

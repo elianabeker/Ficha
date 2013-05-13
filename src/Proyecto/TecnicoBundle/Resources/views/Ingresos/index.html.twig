@@ -1,0 +1,94 @@
+{% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}
+{% endblock %}
+
+{% block page %}
+<div class="row">
+    <div class="span8">
+        <h1>{{ 'views.index.list'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}</h1>
+    </div>
+
+    <div class="span12">
+        <table class="table table-striped table-bordered table-condensed">
+            <thead>
+                <tr>
+                
+                    <th{% if entities.isSorted('a.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Id', 'a.id') }}</th>
+                    
+                
+                    <th{% if entities.isSorted('a.Fecha') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fecha', 'a.fecha') }}</th>
+                    
+                
+                    <th{% if entities.isSorted('a.Actuacionsimple') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Actuacionsimple', 'a.actuacionsimple') }}</th>
+                    
+                
+                    <th{% if entities.isSorted('a.Observaciones') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Observaciones', 'a.observaciones') }}</th>
+                    
+                
+                    <th{% if entities.isSorted('a.Estado') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Estado', 'a.estado') }}</th>
+                    
+                
+                    <th{% if entities.isSorted('a.Fechasalida') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fechasalida', 'a.fechasalida') }}</th>
+                    
+                
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+
+                            
+                    <td><a href="{{ path('ingresos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+
+                
+                                            
+                    <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                
+                                            
+                    <td>{{ entity.actuacionSimple }}</td>
+
+                
+                                            
+                    <td>{{ entity.observaciones }}</td>
+
+                
+                                            
+                    <td>{{ entity.estado }}</td>
+
+                
+                                            
+                    <td>{% if entity.fechaSalida %}{{ entity.fechaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                
+                
+                    <td>
+                        
+        <a class="btn btn-mini" href="{{ path('ingresos_show', { 'id': entity.id }) }}">
+            {{ 'show'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+        </a>
+        <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
+            {{ 'edit'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+        </a>                    </td>
+
+                            
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="span4 navigation">
+        {{ knp_pagination_render(entities) }}
+    </div>
+
+        <div class="span8">
+        <a class="btn btn-primary likepaginator" href="{{ path('ingresos_new') }}">
+            {{ 'createnew'|trans({}, 'MWSimpleCrudGeneratorBundle') }} Ingresos
+        </a>
+    </div>
+    </div>
+{% endblock %}

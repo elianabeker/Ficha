@@ -35,6 +35,9 @@ class Ingresos
      */
     private $actuacionSimple;
 
+     /**
+     * @ORM\OneToOne(targetEntity="Bien", mappedBy="ingresos")
+     */
     private $bien;
 
     /**
