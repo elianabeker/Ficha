@@ -36,7 +36,7 @@ class Ingresos
     private $actuacionSimple;
 
     /**
-     * @ORM\OneToOne(targetEntity="Bien" , cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Bien", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="bien_id", referencedColumnName="id")
      */
     private $bien;

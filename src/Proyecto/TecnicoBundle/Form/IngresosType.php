@@ -16,7 +16,7 @@ class IngresosType extends AbstractType
             ->add('observaciones')
             ->add('estado')
             ->add('fechaSalida')
-            ->add('bien')
+            ->add('bien', new BienType)
         ;
     }
 

@@ -8,9 +8,7 @@
 	<h1>{{ 'views.new.creation'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}</h1>
 
     <form class="well" action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_row(form.fecha) }}
-        {{ form_row(form.actuacionSimple) }}
-        {{ form_row(form.bien) }}
+        {{ form_widget(form) }}
         <p>
             <button type="submit" class="btn btn-success">{{ 'views.new.create'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>

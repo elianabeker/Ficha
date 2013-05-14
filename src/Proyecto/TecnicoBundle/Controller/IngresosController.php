@@ -27,8 +27,8 @@ class IngresosController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        
-        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a WHERE a.estado=1 ORDER BY a.id DESC";
+
+        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a ORDER BY a.id DESC";
         $query = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
@@ -80,8 +80,6 @@ class IngresosController extends Controller
     public function newAction()
     {
         $entity = new Ingresos();
-//        $bien = new Bien();
-//        $entity->getBien()->add($bien);
         $form   = $this->createForm(new IngresosType(), $entity);
 
         return array(

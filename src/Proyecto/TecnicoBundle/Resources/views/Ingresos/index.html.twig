@@ -68,10 +68,10 @@
                     <td>
                         
         <a class="btn btn-mini" href="{{ path('ingresos_show', { 'id': entity.id }) }}">
-            {{ 'show'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+            {{ 'views.actions.show'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
         <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
-            {{ 'edit'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+            {{ 'views.actions.edit'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>                    </td>
 
                             
@@ -87,7 +87,7 @@
 
         <div class="span8">
         <a class="btn btn-primary likepaginator" href="{{ path('ingresos_new') }}">
-            {{ 'createnew'|trans({}, 'MWSimpleCrudGeneratorBundle') }} Ingresos
+            {{ 'views.index.createnew'|trans({}, 'MWSimpleCrudGeneratorBundle') }} Ingresos
         </a>
     </div>
     </div>

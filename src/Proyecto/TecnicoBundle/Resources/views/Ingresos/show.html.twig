@@ -32,19 +32,19 @@
 <div>
     <div class="float-left">
         <a class="btn" href="{{ path('ingresos') }}">
-            {{ 'list'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+            {{ 'views.recordactions.backtothelist'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
     </div>
     <div class="float-left">
         <a class="btn btn-primary" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
-            {{ 'edit'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+            {{ 'views.recordactions.edit'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
     </div>
     <div class="float-left">
         <form action="{{ path('ingresos_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'MWSimpleCrudGeneratorBundle') }}');">{{ 'delete'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'MWSimpleCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </form>
     </div>
 </div>{% endblock %}
