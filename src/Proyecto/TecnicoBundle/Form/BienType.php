@@ -14,7 +14,6 @@ class BienType extends AbstractType
             ->add('nroPat')
             ->add('descripcion')
             ->add('tipoBien')
-            ->add('dependencia')
             //->add('ficha')
         ;
     }

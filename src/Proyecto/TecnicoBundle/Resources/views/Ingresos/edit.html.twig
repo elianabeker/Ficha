@@ -1,28 +1,31 @@
-{% extends '::base.html.twig' %}
+{% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Ingresos edit</h1>
+{% block title %}
+{{ parent() }} - {{ 'views.edit.edit'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}
+{% endblock %}
 
-    <form action="{{ path('ingresos_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+{% block page %}
+    <h1>{{ 'views.edit.edit'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}</h1>
+
+    <form class="well" action="{{ path('ingresos_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
         {{ form_widget(edit_form) }}
         <p>
-            <button type="submit">Edit</button>
+            <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ingresos') }}">
-            Back to the list
+        <div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('ingresos') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-    </li>
-    <li>
+    </div>
+    <div class="float-left">
         <form action="{{ path('ingresos_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'MWSimpleCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </form>
-    </li>
-</ul>
-{% endblock %}
+    </div>
+</div>{% endblock %}

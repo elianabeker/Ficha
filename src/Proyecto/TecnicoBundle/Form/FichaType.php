@@ -12,6 +12,7 @@ class FichaType extends AbstractType
     {
         $builder
             ->add('solicitado')
+            ->add('dependencia')
             ->add('bien', 'collection', array(
                 'type'         => new BienType(),
                 'allow_add'    => true,
@@ -20,6 +21,7 @@ class FichaType extends AbstractType
             ->add('componentes')
             ->add('realizado')
             ->add('fecha')
+            ->add('observaciones')
         ;
     }
 

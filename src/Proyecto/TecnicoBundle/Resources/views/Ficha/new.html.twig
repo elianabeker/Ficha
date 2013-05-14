@@ -6,6 +6,7 @@
     <form action="{{ path('ficha_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.fecha)}}
         {{ form_row(form.solicitado) }}
+        {{ form_row(form.dependencia) }}
     
         
             
@@ -14,9 +15,15 @@
 </div>
         
                             
+
+          <div>
+              <ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> </ul>
+           </div> 
+
         {{ form_row(form.trabajo) }}
-        {{ form_row(form.componentes) }}
+        {{ form_row(form.componentes)}}
         {{ form_row(form.realizado) }}
+        {{ form_row(form.observaciones) }}    
         {{ form_row(form._token) }}
       {#   {{ form_rest(form) }}#}
        
@@ -40,7 +47,7 @@
         // configura una enlace "Agregar un bien"
         
     //var $addBienLink = $('#add_bien_link');
-    var $addBienLink = $('<a href="#" class="add_bien_link">Agregar otro</a>');  
+    var $addBienLink = $('<a href="#" class="add_bien_link">Agregar Bien</a>');  
     var $newLinkLi = $('<li></li>').append($addBienLink);
 
         jQuery(document).ready(function() 

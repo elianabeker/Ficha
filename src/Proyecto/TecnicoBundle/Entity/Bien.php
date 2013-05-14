@@ -40,20 +40,8 @@ class Bien
      * @ORM\Column(name="Descripcion", type="string", length=255)
      */
     private $descripcion;
-    
+  
      /**
-     * @ORM\ManyToOne(targetEntity="Dependencia")
-     */
-    private $dependencia;
-    
-     /**
-     * @ORM\ManyToOne(targetEntity="Ficha", inversedBy="bienes")
-     * @ORM\JoinColumn(name="ficha_id", referencedColumnName="id")
-     */
-    private $ficha;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -133,50 +121,47 @@ class Bien
     }
 
     /**
-     * Set dependencia
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
-     * @return Bien
+     * Constructor
      */
-    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
+    public function __construct()
     {
-        $this->dependencia = $dependencia;
-    
-        return $this;
-    }
-
-    /**
-     * Get dependencia
-     *
-     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
-     */
-    public function getDependencia()
-    {
-        return $this->dependencia;
+        $this->ingresos = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-
-
-    /**
-     * Set ficha
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Ficha $ficha
-     * @return Bien
-     */
-    public function setFicha(\Proyecto\TecnicoBundle\Entity\Ficha $ficha = null)
-    {
-        $this->ficha = $ficha;
+//    /**
+//     * Add ingresos
+//     *
+//     * @param \Proyecto\TecnicoBundle\Entity\Ingresos $ingresos
+//     * @return Bien
+//     */
+//    public function addIngreso(\Proyecto\TecnicoBundle\Entity\Ingresos $ingresos)
+//    {
+//        $this->ingresos[] = $ingresos;
+//    
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove ingresos
+//     *
+//     * @param \Proyecto\TecnicoBundle\Entity\Ingresos $ingresos
+//     */
+//    public function removeIngreso(\Proyecto\TecnicoBundle\Entity\Ingresos $ingresos)
+//    {
+//        $this->ingresos->removeElement($ingresos);
+//    }
+//
+//    /**
+//     * Get ingresos
+//     *
+//     * @return \Doctrine\Common\Collections\Collection 
+//     */
+//    public function getIngresos()
+//    {
+//        return $this->ingresos;
+//    }
     
-        return $this;
-    }
-
-    /**
-     * Get ficha
-     *
-     * @return \Proyecto\TecnicoBundle\Entity\Ficha 
-     */
-    public function getFicha()
-    {
-        return $this->ficha;
+    public function __toString() {
+        return $this->descripcion;
     }
 }

@@ -14,11 +14,24 @@
                 <td>{{ entity.solicitado }}</td>
             </tr>
             <tr>
-                <th>Bien</th>
-                {% for bien in entity.bien %}
-                   <td>{{ bien.descripcion }}</td>
+                <th>Bien/Bienes</th>
+                   {% for bien in entity.bien %}
+                    <tr>
+                        <td>{{ bien.nroPat }}</td>
+                        <td>{{ bien.descripcion }}</td>
+                    </tr>
                 {% endfor %}
+            </tr>   
+            <th>Trabajos realizados</th>
+                   {% for trabajo in entity.trabajo %}
+                     <tr><td>{{ trabajo.descripcion }}</td></tr>
+                   {% endfor %}
             </tr>
+            <th>Componentes</th>
+                   {% for componentes in entity.componentes %}
+                     <tr><td>{{ componentes.descripcion }}</td></tr>
+                   {% endfor %}
+            </tr> 
             <tr>
                 <th>Realizado</th>
                 <td>{{ entity.realizado }}</td>
@@ -27,6 +40,11 @@
                 <th>Fecha</th>
                 <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
             </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ entity.observaciones }}</td>
+            </tr>
+            
         </tbody>
     </table>
 

@@ -1,20 +1,23 @@
-{% extends '::base.html.twig' %}
+{% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Ingresos creation</h1>
+{% block title %}
+{{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}
+{% endblock %}
 
-    <form action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>
+{% block page %}
+	<h1>{{ 'views.new.creation'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}</h1>
+
+    <form class="well" action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
-            <button type="submit">Create</button>
+            <button type="submit" class="btn btn-success">{{ 'views.new.create'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ingresos') }}">
-            Back to the list
+        <div>
+    <div class="float-left">
+        <a class="btn" href="{{ path('ingresos') }}">
+            {{ 'views.recordactions.backtothelist'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-    </li>
-</ul>
-{% endblock %}
+    </div>
+</div>{% endblock %}

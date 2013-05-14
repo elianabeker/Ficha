@@ -28,10 +28,18 @@ class IngresosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ProyectoTecnicoBundle:Ingresos')->findAll();
+        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a ORDER BY a.id DESC";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
         return array(
-            'entities' => $entities,
+            'entities' => $pagination,
         );
     }
 

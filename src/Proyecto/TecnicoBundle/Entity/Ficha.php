@@ -28,19 +28,36 @@ class Ficha
      * @ORM\Column(name="Solicitado", type="string", length=255)
      */
     private $solicitado;
-
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Dependencia")
+     */
+    private $dependencia;
+    
     /**
-     * @ORM\OneToOne(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
-    */
+     * @ORM\ManyToMany(targetEntity="Bien", cascade={"persist"})
+     * @ORM\JoinTable(name="ficha_bien",
+     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="bien_id", referencedColumnName="id")}
+     *      )
+     */
     private $bien;
 
     /**
-     * @ORM\OneToMany(targetEntity="Trabajos", mappedBy="ficha")
+     * @ORM\ManyToMany(targetEntity="Trabajos")
+     * @ORM\JoinTable(name="ficha_trabajo",
+     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="trabajo_id", referencedColumnName="id")}
+     *      )
      */
     private $trabajo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Componentes", mappedBy="ficha")
+     * @ORM\ManyToMany(targetEntity="Componentes")
+     * @ORM\JoinTable(name="ficha_componente",
+     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="componente_id", referencedColumnName="id")}
+     *      )
      */
     private $componentes;
 
@@ -57,8 +74,14 @@ class Ficha
      * @ORM\Column(name="Fecha", type="date")
      */
     private $fecha;
-
-
+  
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
+     */
+    private $observaciones;
+    
     /**
      * Get id
      *
@@ -104,13 +127,6 @@ class Ficha
     foreach ($bien as $bienes) {
             $bienes->setFicha($this);
         }
-        
-        
-//         foreach ($bien as $bienes) {
-//        $bienes->addBien($this);
-//    }
-//
-//    $this->bien = $bien;
     }
 
     /**
@@ -268,5 +284,84 @@ class Ficha
     public function removeComponente(\Proyecto\TecnicoBundle\Entity\Componentes $componentes)
     {
         $this->componentes->removeElement($componentes);
+    }
+    
+        /**
+     * Set dependencia
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
+     * @return Bien
+     */
+    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
+    {
+        $this->dependencia = $dependencia;
+    
+        return $this;
+    }
+
+    /**
+     * Get dependencia
+     *
+     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
+     */
+    public function getDependencia()
+    {
+        return $this->dependencia;
+    }
+
+    /**
+     * Add bien
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
+     * @return Ficha
+     */
+    public function addBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
+    {
+        $this->bien[] = $bien;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bien
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
+     */
+    public function removeBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
+    {
+        $this->bien->removeElement($bien);
+    }
+
+    /**
+     * Get trabajos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTrabajos()
+    {
+        return $this->trabajos;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return Ficha
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
     }
 }

@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Proyecto\TecnicoBundle\ProyectoTecnicoBundle(),
+            new MWSimple\Bundle\CrudGeneratorBundle\MWSimpleCrudGeneratorBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

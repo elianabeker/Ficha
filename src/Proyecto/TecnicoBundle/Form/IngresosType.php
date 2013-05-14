@@ -16,14 +16,15 @@ class IngresosType extends AbstractType
             ->add('observaciones')
             ->add('estado')
             ->add('fechaSalida')
-            ->add('bien', new BienType())
+            ->add('bien', new BienType)
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Proyecto\TecnicoBundle\Entity\Ingresos'
+            'data_class' => 'Proyecto\TecnicoBundle\Entity\Ingresos',
+            'cascade_validation' => true,
         ));
     }
 

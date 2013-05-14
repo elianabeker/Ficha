@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Solicitado</th>
                 <th>Bien</th>
+                <th>Nro Patrimonio</th>
                 <th>Realizado</th>
                 <th>Fecha</th>
                 <th>Actions</th>
@@ -22,6 +23,14 @@
                 {% for bien in entity.bien %}
                       <td>{{ entity.bien.nroPat}}</td>
                  {% endfor %}     
+               {% for bien in entity.bien %}
+                 <tr>
+                   <td>{{ bien.nroPat }}</td>
+                   <td>{{ bien.descripcion }}</td>
+                   <tr>
+             
+                {% endfor %}   
+
                 <td>{{ entity.realizado }}</td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y')}}{% endif %}</td>
                 <td>

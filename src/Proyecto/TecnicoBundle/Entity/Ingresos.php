@@ -35,6 +35,10 @@ class Ingresos
      */
     private $actuacionSimple;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Bien", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="bien_id", referencedColumnName="id")
+     */
     private $bien;
 
     /**
@@ -118,10 +122,10 @@ class Ingresos
     /**
      * Set bien
      *
-     * @param string $bien
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
      * @return Ingresos
      */
-    public function setBien($bien)
+    public function setBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
     {
         $this->bien = $bien;
     
@@ -131,7 +135,7 @@ class Ingresos
     /**
      * Get bien
      *
-     * @return string 
+     * @return \Proyecto\TecnicoBundle\Entity\Bien
      */
     public function getBien()
     {
