@@ -36,7 +36,8 @@ class Ingresos
     private $actuacionSimple;
 
      /**
-     * @ORM\OneToOne(targetEntity="Bien", mappedBy="ingresos")
+     * @ORM\ManyToOne(targetEntity="Bien", inversedBy="ingreso")
+     * @ORM\JoinColumn(name="bien_id", referencedColumnName="id")
      */
     private $bien;
 

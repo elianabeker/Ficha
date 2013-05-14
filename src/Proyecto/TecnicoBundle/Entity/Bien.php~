@@ -46,7 +46,11 @@ class Bien
      * @ORM\JoinColumn(name="ficha_id", referencedColumnName="id")
      */
     private $ficha;
-
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Ingresos", mappedBy="bien")
+     */
+     private $ingresos;
 
     /**
      * Get id

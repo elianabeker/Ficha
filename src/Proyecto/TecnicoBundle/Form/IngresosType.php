@@ -23,7 +23,8 @@ class IngresosType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Proyecto\TecnicoBundle\Entity\Ingresos'
+            'data_class' => 'Proyecto\TecnicoBundle\Entity\Ingresos',
+            'cascade_validation' => true,
         ));
     }
 

@@ -35,8 +35,12 @@ class Ficha
     private $dependencia;
     
     /**
-    * @ORM\OneToMany(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
-    */
+     * @ORM\ManyToMany(targetEntity="Bien", cascade={"persist"})
+     * @ORM\JoinTable(name="ficha_bien",
+     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="bien_id", referencedColumnName="id")}
+     *      )
+     */
     private $bien;
 
     /**
@@ -74,12 +78,10 @@ class Ficha
     /**
      * @var string
      * 
-     *
      * @ORM\Column(name="observaciones", type="text", nullable=true)
      */
     private $observaciones;
-
-
+    
     /**
      * Get id
      *

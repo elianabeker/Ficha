@@ -80,6 +80,8 @@ class IngresosController extends Controller
     public function newAction()
     {
         $entity = new Ingresos();
+//        $bien = new Bien();
+//        $entity->getBien()->add($bien);
         $form   = $this->createForm(new IngresosType(), $entity);
 
         return array(

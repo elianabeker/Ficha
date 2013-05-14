@@ -35,8 +35,12 @@ class Ficha
     private $dependencia;
     
     /**
-     * @ORM\OneToMany(targetEntity="Bien", mappedBy="ficha", cascade={"persist", "remove"})
-    */
+     * @ORM\ManyToMany(targetEntity="Bien")
+     * @ORM\JoinTable(name="ficha_bien",
+     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="bien_id", referencedColumnName="id")}
+     *      )
+     */
     private $bien;
 
     /**
@@ -73,12 +77,11 @@ class Ficha
   
     /**
      * @var string
-     *
-     * @ORM\Column(name="observaciones", type="text")
+     * 
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
      */
     private $observaciones;
-
-
+    
     /**
      * Get id
      *
@@ -337,5 +340,28 @@ class Ficha
     public function getTrabajos()
     {
         return $this->trabajos;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return Ficha
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
     }
 }
