@@ -7,7 +7,8 @@
 <link href="{{ asset('bundles/proyectotecnico/css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('bundles/proyectotecnico/css/bootstrap-responsive.css') }}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/mos-css/mos-style.css') }}"> <!--pemanggilan file css-->
-</head>
+<script src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+    </head>
 <body>
 <div id="header">
 	<div class="inHeader">
@@ -20,8 +21,8 @@
 <div id="wrapper">
 	<div id="leftBar">
 	<ul>
-		<li><a href="{{path('ficha')}}">Ingresos</a></li>
-		<li><a href="{{path('ficha')}}">Ficha</a></li>
+		<li><a href="{{path('ingresos')}}">Ingresos</a></li>
+		<li><a href="{{path('ficha_new')}}">Ficha</a></li>
 		<li><a href="{{path('ficha')}}">Egresos</a></li>
 	</ul>
 	</div>

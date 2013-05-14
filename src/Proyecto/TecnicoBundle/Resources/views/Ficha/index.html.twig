@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Listar Fichas</h1>
 
-    <table class="records_list">
+   <Table  clase = "mesa de ping-confinada" >
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,11 +19,11 @@
             <tr>
                 <td><a href="{{ path('ficha_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.solicitado }}</td>
-                {% for bienes in form.bien %}
+                {% for bien in entity.bien %}
                       <td>{{ entity.bien.nroPat}}</td>
                  {% endfor %}     
                 <td>{{ entity.realizado }}</td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y')}}{% endif %}</td>
                 <td>
                 <ul>
                     <li>

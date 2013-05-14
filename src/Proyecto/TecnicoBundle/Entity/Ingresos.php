@@ -35,10 +35,6 @@ class Ingresos
      */
     private $actuacionSimple;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Bien", mappedBy="ingreso", cascade={"persist"})
-     * @ORM\JoinColumn(name="bieb_id", referencedColumnName="id")
-     */
     private $bien;
 
     /**
