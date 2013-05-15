@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new Proyecto\TecnicoBundle\ProyectoTecnicoBundle(),
             new MWSimple\Bundle\CrudGeneratorBundle\MWSimpleCrudGeneratorBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

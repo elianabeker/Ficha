@@ -28,7 +28,7 @@ class IngresosController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a ORDER BY a.id DESC";
+        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a WHERE a.estado=1 ORDER BY a.id DESC";
         $query = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');

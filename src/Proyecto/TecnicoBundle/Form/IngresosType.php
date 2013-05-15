@@ -11,12 +11,20 @@ class IngresosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fecha')
+            ->add('fecha','date', array(
+                      'input'  => 'datetime',
+                      'widget' => 'choice',
+                      'format' => 'dd MM yyyy'))
             ->add('actuacionSimple')
             ->add('observaciones')
-            ->add('estado')
+             ->add('estado', 'choice', array(
+                'choices' => array(
+                    0 => 'Entregado',
+                    1 => 'En mesa de entrada'
+                ),
+                'data' => 1))
             ->add('fechaSalida')
-            ->add('bien', new BienType)
+            ->add('bien', new BienType())
         ;
     }
 
