@@ -7,15 +7,7 @@
         {{ form_row(form.fecha)}}
         {{ form_row(form.solicitado) }}
         {{ form_row(form.dependencia) }}
-    
-        
-            
-  <div class="row-fluid">
-     <ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}">
-</div>
-        
-                            
-
+   
           <div>
               <ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> </ul>
            </div> 
@@ -48,7 +40,7 @@
         
     //var $addBienLink = $('#add_bien_link');
     var $addBienLink = $('<a href="#" class="add_bien_link">Agregar Bien</a>');  
-    var $newLinkLi = $('<li></li>').append($addBienLink);
+    var $newLinkLi = $('<div></div>').append($addBienLink);
 
         jQuery(document).ready(function() 
             {
@@ -86,7 +78,7 @@
 
                 // Muestra el formulario en la página en un elemento li,
                 // antes del enlace 'Agregar una etiqueta'
-                var $newFormLi = $('<li></li>').append(newForm);
+                var $newFormLi = $('<div></div>').append(newForm);
                 $newLinkLi.before($newFormLi);
                 }   
        </script>  

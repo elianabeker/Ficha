@@ -17,9 +17,9 @@
 		</div>
 	</div>
 </div>
-
+        <div class="row">
 <div id="wrapper">
-	<div id="leftBar">
+	<div id="leftBar">   
 	<ul>
 		<li><a href="{{path('ingresos')}}">Ingresos</a></li>
 		<li><a href="{{path('ficha_new')}}">Ficha</a></li>
@@ -27,9 +27,11 @@
 	</ul>
 	</div>
 	<div id="rightContent">
+            <div class="span8">
             <body>
         {% block body %}{% endblock %}
           </body>
+          </div>
 	</div>
 		
 	<div class="clear"></div>
@@ -39,5 +41,6 @@
          
 </div>
 </div>
+                </div>
 </body>
 </html>
