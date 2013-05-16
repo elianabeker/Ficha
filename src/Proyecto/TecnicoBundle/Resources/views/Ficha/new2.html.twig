@@ -7,11 +7,7 @@
         {{ form_row(form.fecha)}}
         {{ form_row(form.solicitado) }}
         {{ form_row(form.dependencia) }}
-   
-          <div>
-              <ul class="bien" data-prototype="{{ form_widget(form.bien.vars.prototype)|e }}"> </ul>
-           </div> 
-
+        {{ form_row(form.bien) }}
         {{ form_row(form.trabajo) }}
         {{ form_row(form.componentes)}}
         {{ form_row(form.realizado) }}

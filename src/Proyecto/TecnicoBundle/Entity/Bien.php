@@ -125,7 +125,8 @@ class Bien
         return $this->descripcion;
     }
     
-//    public function __toString() {
-//        return $this->nroPat;
-//    }
+            
+    public function __toString() {
+        return $this->descripcion;
+    }
 }

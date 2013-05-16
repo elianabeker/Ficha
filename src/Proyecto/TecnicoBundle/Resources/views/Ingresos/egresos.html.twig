@@ -5,7 +5,7 @@
 {% block page %}
 <div class="row">
     <div class="span8">
-        <h1>Ingresos</h1>
+        <h1>Egresos</h1>
     </div>
 
     <div class="span7">
@@ -26,7 +26,7 @@
                     <th{% if entities.isSorted('a.Bien') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Nro Patrimonio', 'a.bien') }}</th>
                     <th{% if entities.isSorted('a.tipoBien') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Tipo de bien', 'a.tipoBien') }}</th>
                     <th{% if entities.isSorted('a.descripcion') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Descripcion del bien', 'a.descripcion') }}</th>
-                  
+                    <th{% if entities.isSorted('a.fechaSalida') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fecha de salida', 'a.fechaSalida') }}</th>
                     
                 
                     <th>Actions</th>
@@ -54,7 +54,7 @@
                     <td>{{ entity.bien.nroPat }}</td>
                     <td>{{ entity.bien.tipoBien }}</td>     
                     <td>{{ entity.bien.descripcion }}</td> 
-                              
+                     <td>{{ entity.fechaSalida }}</td>         
                 
                     <td>
                         

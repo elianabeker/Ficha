@@ -31,7 +31,7 @@ class Ingresos
     /**
      * @var string
      *
-     * @ORM\Column(name="ActuacionSimple", type="string", length=255)
+     * @ORM\Column(name="ActuacionSimple", type="string", length=255, nullable=true)
      */
     private $actuacionSimple;
 

@@ -773,7 +773,11 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Johannes Schmitt",
+=======
+                    "name": "Johannes M. Schmitt",
+>>>>>>> db7f74835829dbacf8e65a4d97a8bfc4c2404836
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -820,7 +824,11 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Johannes Schmitt",
+=======
+                    "name": "Johannes M. Schmitt",
+>>>>>>> db7f74835829dbacf8e65a4d97a8bfc4c2404836
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -885,7 +893,11 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Johannes Schmitt",
+=======
+                    "name": "Johannes M. Schmitt",
+>>>>>>> db7f74835829dbacf8e65a4d97a8bfc4c2404836
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -1040,7 +1052,11 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Johannes Schmitt",
+=======
+                    "name": "Johannes M. Schmitt",
+>>>>>>> db7f74835829dbacf8e65a4d97a8bfc4c2404836
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"

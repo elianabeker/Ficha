@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Proyecto\TecnicoBundle\Entity\Ficha;
 use Proyecto\TecnicoBundle\Form\FichaType;
 use Proyecto\TecnicoBundle\Entity\Bien;
+use Proyecto\TecnicoBundle\Form\Ficha2Type;
 
 /**
  * Ficha controller.
@@ -84,19 +85,19 @@ class FichaController extends Controller
         );
     }
     
-      /**
+         /**
      * Displays a form to create a new Ficha entity.
      *
-     * @Route("/new2", name="ficha_new2")
+     * @Route("/new2", name="ficha2_new")
      * @Method("GET")
      * @Template()
      */
-    public function new2Action($id)
+    public function new2Action()
     {
         $entity = new Ficha();
-        $bien = new Bien();
-        $entity->getBien()->add($bien);
-        $form   = $this->createForm(new FichaType(), $entity);
+       // $bien = new Bien();
+       // $entity->getBien()->add($bien);
+        $form   = $this->createForm(new Ficha2Type(), $entity);
 
         return array(
             'entity' => $entity,
