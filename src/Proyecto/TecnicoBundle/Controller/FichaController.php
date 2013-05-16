@@ -75,6 +75,7 @@ class FichaController extends Controller
     {
         $entity = new Ficha();
         $bien = new Bien();
+        $entity->setFecha(new \DateTime('now'));
         $entity->getBien()->add($bien);
         $form   = $this->createForm(new FichaType(), $entity);
 
