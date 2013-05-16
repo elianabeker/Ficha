@@ -36,7 +36,7 @@ class Ingresos
     private $actuacionSimple;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Bien", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Bien", inversedBy="ingreso", cascade={"persist"})
      * @ORM\JoinColumn(name="bien_id", referencedColumnName="id")
      */
     private $bien;
@@ -44,21 +44,21 @@ class Ingresos
     /**
      * @var string
      *
-     * @ORM\Column(name="Observaciones", type="string", length=255)
+     * @ORM\Column(name="Observaciones", type="string", length=255, nullable=true)
      */
     private $observaciones;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Estado", type="integer")
+     * @ORM\Column(name="Estado", type="integer", nullable=true)
      */
     private $estado=1;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="FechaSalida", type="date")
+     * @ORM\Column(name="FechaSalida", type="date", nullable=true)
      */
     private $fechaSalida;
 
@@ -125,11 +125,10 @@ class Ingresos
      * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
      * @return Ingresos
      */
-    public function setBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
+    public function setBien(\Proyecto\TecnicoBundle\Entity\Bien $bien = null)
     {
-        $this->bien = $bien;
-    
-        return $this;
+       $this->bien = $bien;
+       return $this;
     }
 
     /**
@@ -210,34 +209,8 @@ class Ingresos
     {
         return $this->fechaSalida;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->bien = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Add bien
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
-     * @return Ingresos
-     */
-    public function addBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
-    {
-        $this->bien[] = $bien;
-    
-        return $this;
-    }
 
-    /**
-     * Remove bien
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
-     */
-    public function removeBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
-    {
-        $this->bien->removeElement($bien);
+    public function __construct() {
+        $this->ingreso = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }

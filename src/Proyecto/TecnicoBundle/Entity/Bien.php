@@ -40,7 +40,12 @@ class Bien
      * @ORM\Column(name="Descripcion", type="string", length=255)
      */
     private $descripcion;
-  
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Ingresos", mappedBy="bien")
+     */
+    private $ingresos;
+    
      /**
      * Get id
      *
@@ -119,47 +124,6 @@ class Bien
     {
         return $this->descripcion;
     }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ingresos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-//    /**
-//     * Add ingresos
-//     *
-//     * @param \Proyecto\TecnicoBundle\Entity\Ingresos $ingresos
-//     * @return Bien
-//     */
-//    public function addIngreso(\Proyecto\TecnicoBundle\Entity\Ingresos $ingresos)
-//    {
-//        $this->ingresos[] = $ingresos;
-//    
-//        return $this;
-//    }
-//
-//    /**
-//     * Remove ingresos
-//     *
-//     * @param \Proyecto\TecnicoBundle\Entity\Ingresos $ingresos
-//     */
-//    public function removeIngreso(\Proyecto\TecnicoBundle\Entity\Ingresos $ingresos)
-//    {
-//        $this->ingresos->removeElement($ingresos);
-//    }
-//
-//    /**
-//     * Get ingresos
-//     *
-//     * @return \Doctrine\Common\Collections\Collection 
-//     */
-//    public function getIngresos()
-//    {
-//        return $this->ingresos;
-//    }
     
     public function __toString() {
         return $this->descripcion;
