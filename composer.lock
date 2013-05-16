@@ -1,9 +1,9 @@
 {
-<<<<<<< HEAD
+
     "hash": "850d325debd42a8c36fa65dfce60bd2b",
-=======
+
     "hash": "d885fcfd25558f48d96d538b996686b6",
->>>>>>> f3ff96208ded8c34f40f1e851315e7ac08b03f78
+
     "packages": [
         {
             "name": "doctrine/annotations",
