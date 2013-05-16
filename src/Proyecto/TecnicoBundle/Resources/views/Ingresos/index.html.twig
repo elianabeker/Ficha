@@ -23,8 +23,9 @@
                     
                 
                     <th{% if entities.isSorted('a.Observaciones') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Observaciones', 'a.observaciones') }}</th>
-                    
-                
+                    <th{% if entities.isSorted('a.Bien') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Nro Patrimonio', 'a.bien') }}</th>
+                    <th{% if entities.isSorted('a.tipoBien') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Tipo de bien', 'a.tipoBien') }}</th>
+                    <th{% if entities.isSorted('a.descripcion') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Descripcion del bien', 'a.descripcion') }}</th>
                     <th{% if entities.isSorted('a.Estado') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Estado', 'a.estado') }}</th>
                     
                 
@@ -53,8 +54,9 @@
                                             
                     <td>{{ entity.observaciones }}</td>
 
-                
-                                            
+                    <td>{{ entity.bien.nroPat }}</td>
+                    <td>{{ entity.bien.tipoBien }}</td>     
+                    <td>{{ entity.bien.descripcion }}</td> 
                     <td>{{ entity.estado }}</td>
 
                 
@@ -68,8 +70,8 @@
         <a class="btn btn-mini" href="{{ path('ingresos_show', { 'id': entity.id }) }}">
             {{ 'views.actions.show'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
-            {{ 'views.actions.edit'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+        <a class="btn btn-mini" href="{{ path('ficha_new2', { 'bien': entity.bien })}}">
+         {{ 'Hacer una ficha'|trans({}) }}
         </a>                    </td>
 
                             

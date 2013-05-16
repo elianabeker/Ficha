@@ -17,12 +17,10 @@ class IngresosType extends AbstractType
                       'format' => 'dd MM yyyy'))
             ->add('actuacionSimple')
             ->add('observaciones')
-             ->add('estado', 'choice', array(
-                'choices' => array(
-                    0 => 'Entregado',
-                    1 => 'En mesa de entrada'
-                ),
-                'data' => 1))
+            ->add('estado', 'choice', array(
+                        'choices' => array('1' => 'En mesa de entrada', 
+                                           '2' => 'Entregado',
+                                           '3' => 'Revisado')))
             ->add('fechaSalida')
             ->add('bien', new BienType())
         ;
