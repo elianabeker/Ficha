@@ -90,7 +90,7 @@ class FichaController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function new2Action()
+    public function new2Action($id)
     {
         $entity = new Ficha();
         $bien = new Bien();
