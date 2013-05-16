@@ -9,23 +9,39 @@
 
     <form class="well" action="{{ path('ingresos_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
-        {{ form_widget(edit_form) }}
+    <div class="control-group">
+                <label class="control-label">Id</label>
+                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.id }}</span>                </div>
+            </div>            <div class="control-group">
+                <label class="control-label">Fecha</label>
+                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.fecha|date('Y-m-d H:i:s') }}</span>                </div>
+            </div>            <div class="control-group">
+                <label class="control-label">Actuacionsimple</label>
+                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.actuacionSimple }}</span>                </div>
+            </div>            <div class="control-group">
+                <label class="control-label">Observaciones</label>
+                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.observaciones }}</span>                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Nro Patrimonio del Bien</label>
+                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.bien.nroPat }}</span>                </div>
+            </div>            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">                    <span class="input-xlarge">{{ form_row(edit_form.estado)}}</span>                </div>
+            </div>            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">                    <span class="input-xlarge ">{{ form_row(edit_form.fechaSalida) }}</span>                </div>
+            </div> 
+            {{ form_row(edit_form._token) }}
         <p>
-            <button type="submit" class="btn btn-success">{{ 'views.edit.editbutton'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
+            <button type="submit" class="btn btn-success">{{ 'Registrar'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>
     </form>
 
         <div>
     <div class="float-left">
         <a class="btn" href="{{ path('ingresos') }}">
-            {{ 'views.recordactions.backtothelist'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+            {{ 'Volver a la lista'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
     </div>
-    <div class="float-left">
-        <form action="{{ path('ingresos_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('{{ 'views.recordactions.confirm'|trans({}, 'MWSimpleCrudGeneratorBundle') }}');">{{ 'views.recordactions.delete'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
-        </form>
-    </div>
-</div>{% endblock %}
+    </div>{% endblock %}

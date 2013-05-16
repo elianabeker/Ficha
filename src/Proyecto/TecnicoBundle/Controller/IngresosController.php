@@ -215,4 +215,28 @@ class IngresosController extends Controller
             ->getForm()
         ;
     }
+    
+    /**
+     * Lists all Ingresos entities.
+     * @Route("/egresos", name="egresos")
+     * @Template("ProyectoTecnicoBundle:Ingresos:egresos.html.twig")
+     */
+     public function egresosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a WHERE a.estado=2 ORDER BY a.id DESC";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        return array(
+            'entities' => $pagination,
+        );
+    }
 }
