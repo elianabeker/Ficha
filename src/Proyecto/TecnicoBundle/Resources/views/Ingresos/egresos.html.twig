@@ -1,7 +1,5 @@
 {% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
 
-
-
 {% block page %}
 <div class="row">
     <div class="span8">
@@ -64,11 +62,6 @@
         <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
             {{ 'Registrar Salida'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('ficha2_new')}}">
-         {{ 'Hacer una ficha'|trans({}) }}
-        </a>                    </td>
-
-                            
                 </tr>
             {% endfor %}
             </tbody>

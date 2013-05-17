@@ -1,7 +1,5 @@
 {% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
 
-
-
 {% block page %}
 <div class="row">
     <div class="span8">
@@ -41,7 +39,7 @@
 
                 
                                             
-                    <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
 
                 
                                             
@@ -64,9 +62,7 @@
         <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
             {{ 'Registrar Salida'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('ficha2_new')}}">
-         {{ 'Hacer una ficha'|trans({}) }}
-        </a>                    </td>
+                            </td>
 
                             
                 </tr>
@@ -81,7 +77,11 @@
 
         <div class="span7">
         <a class="btn btn-primary likepaginator" href="{{ path('ingresos_new') }}">
-            {{ 'Registrar un nuevo ingreso'|trans({}, 'MWSimpleCrudGeneratorBundle') }} Ingresos
+            {{ 'Registrar un nuevo Ingreso'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+        </a>
+                </div><div class="span7">
+        <a class="btn btn-primary likepaginator" href="{{ path('ficha_new') }}">
+            {{ 'Hacer una ficha'|trans({}, 'MWSimpleCrudGeneratorBundle') }} 
         </a>
     </div>
     </div>

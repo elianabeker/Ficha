@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <th>Fecha</th>
-                <td>{{ entity.fecha}}</td>
+                <td>{{ entity.fecha|date('d-M-Y')}}</td>
             </tr>
             <tr>
                 <th>Observaciones</th>
@@ -49,22 +49,18 @@
     </table>
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('ficha') }}">
-            Back to the list
+
+      <ul>
+        <a class="btn btn-mini" href="{{ path('ficha')}}">
+            {{ 'Volver a la lista'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-    </li>
-    <li>
-        <a href="{{ path('ficha_edit', { 'id': entity.id }) }}">
-            Edit
+    </ul>
+          
+             <ul>
+        <a class="btn btn-mini" href="{{ path('ficha_new')}}">
+            {{ 'Crear una nueva ficha'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-    </li>
-    <li>
-        <form action="{{ path('ficha_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
+    </ul>
+        
 </ul>
 {% endblock %}

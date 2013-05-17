@@ -44,8 +44,8 @@ class Ficha
     private $bien;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Trabajos")
-     * @ORM\JoinTable(name="ficha_trabajo",
+     * @ORM\ManyToMany(targetEntity="Trabajos", cascade={"persist"})
+     * @ORM\JoinTable(name="ficha_trabajo")
      *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="trabajo_id", referencedColumnName="id")}
      *      )
@@ -54,7 +54,7 @@ class Ficha
 
     /**
      * @ORM\ManyToMany(targetEntity="Componentes")
-     * @ORM\JoinTable(name="ficha_componente",
+     * @ORM\JoinTable(name="ficha_componente")
      *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="componente_id", referencedColumnName="id")}
      *      )
@@ -69,7 +69,7 @@ class Ficha
     private $realizado;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
      * @ORM\Column(name="Fecha", type="date")
      */
@@ -165,10 +165,10 @@ class Ficha
     /**
      * Set componentes
      *
-     * @param string $componentes
+     * @param Proyecto\TecnicoBundle\Entity\Componentes $componentes
      * @return Ficha
      */
-    public function setComponentes($componentes)
+    public function setComponentes(Componentes $componentes = null)
     {
         $this->componentes = $componentes;
     

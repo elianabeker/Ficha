@@ -20,7 +20,11 @@ class FichaType extends AbstractType
             ->add('trabajo')
             ->add('componentes')
             ->add('realizado')
-            ->add('fecha')
+            ->add('fecha',
+                    'date', array(
+                      'input'  => 'datetime',
+                      'widget' => 'choice',
+                      'format' => 'dd MM yyyy'))
             ->add('observaciones')
         ;
     }

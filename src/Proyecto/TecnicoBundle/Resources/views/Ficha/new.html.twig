@@ -24,13 +24,11 @@
         </p>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ficha') }}">
-            Back to the list
+       <ul>
+        <a class="btn btn-mini" href="{{ path('ficha')}}">
+            {{ 'Ir a la lista'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-    </li>
-</ul>
+    </ul>
     
     <script type="text/javascript">
         // Obtiene la ul que contiene la colección de bienes

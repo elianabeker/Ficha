@@ -14,7 +14,7 @@
                 <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.id }}</span>                </div>
             </div>            <div class="control-group">
                 <label class="control-label">Fecha</label>
-                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.fecha|date('Y-m-d H:i:s') }}</span>                </div>
+                <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.fecha|date('d-M-Y') }}</span>                </div>
             </div>            <div class="control-group">
                 <label class="control-label">Actuacionsimple</label>
                 <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.actuacionSimple }}</span>                </div>
@@ -27,14 +27,14 @@
                 <div class="controls">                    <span class="input-xlarge uneditable-input">{{ entity.bien.nroPat }}</span>                </div>
             </div>            <div class="control-group">
                 <label class="control-label"></label>
-                <div class="controls">                    <span class="input-xlarge">{{ form_row(edit_form.estado)}}</span>                </div>
+                
             </div>            <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">                    <span class="input-xlarge ">{{ form_row(edit_form.fechaSalida) }}</span>                </div>
             </div> 
             {{ form_row(edit_form._token) }}
         <p>
-            <button type="submit" class="btn btn-success">{{ 'Registrar'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
+            <button type="submit" class="btn btn-success" href="{{ path('ingresos') }}">{{ 'Registrar'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>
     </form>
 

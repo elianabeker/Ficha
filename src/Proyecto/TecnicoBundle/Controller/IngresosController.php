@@ -80,6 +80,9 @@ class IngresosController extends Controller
     public function newAction()
     {
         $entity = new Ingresos();
+        $entity->setFecha(new \DateTime('now'));
+        $entity->setEstado(1);
+        $entity->setFechaSalida(null);
         $form   = $this->createForm(new IngresosType(), $entity);
 
         return array(
@@ -100,7 +103,7 @@ class IngresosController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ProyectoTecnicoBundle:Ingresos')->find($id);
-
+      
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Ingresos entity.');
         }
@@ -125,7 +128,8 @@ class IngresosController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('ProyectoTecnicoBundle:Ingresos')->find($id);
-
+        $entity->setEstado(2);
+        $entity->setFechaSalida(new \DateTime('now'));
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Ingresos entity.');
         }
@@ -216,10 +220,12 @@ class IngresosController extends Controller
         ;
     }
     
-    /**
+ /**
      * Lists all Ingresos entities.
+     *
      * @Route("/egresos", name="egresos")
-     * @Template("ProyectoTecnicoBundle:Ingresos:egresos.html.twig")
+     * @Method("GET")
+     * @Template("ProyectoTecnicoBundle:Ingresos:index.html.twig"))
      */
      public function egresosAction()
     {

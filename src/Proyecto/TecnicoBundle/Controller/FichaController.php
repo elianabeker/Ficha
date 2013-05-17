@@ -85,26 +85,7 @@ class FichaController extends Controller
         );
     }
     
-         /**
-     * Displays a form to create a new Ficha entity.
-     *
-     * @Route("/new2", name="ficha2_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function new2Action()
-    {
-        $entity = new Ficha();
-       // $bien = new Bien();
-       // $entity->getBien()->add($bien);
-        $form   = $this->createForm(new Ficha2Type(), $entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
+   
     /**
      * Finds and displays a Ficha entity.
      *

@@ -20,28 +20,23 @@
             <tr>
                 <td><a href="{{ path('ficha_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.solicitado }}</td>
-                {% for bien in entity.bien %}
-                      <td>{{ entity.bien.nroPat}}</td>
-                 {% endfor %}     
-               {% for bien in entity.bien %}
-                 <tr>
-                   <td>{{ bien.nroPat }}</td>
-                   <td>{{ bien.descripcion }}</td>
-                   <tr>
-             
-                {% endfor %}   
+                <td>{% for bien in entity.bien %}
+                      {{ bien.descripcion}}
+                 {% endfor %}    
+                  </td>     
+            <td>{% for bien in entity.bien %}
+                      {{ bien.nroPat}}
+                 {% endfor %}    
+                  </td>   
 
                 <td>{{ entity.realizado }}</td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y')}}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y')}}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
                         <a href="{{ path('ficha_show', { 'id': entity.id }) }}">show</a>
                     </li>
-                    <li>
-                        <a href="{{ path('ficha_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
@@ -49,10 +44,8 @@
     </table>
 
         <ul>
-        <li>
-            <a href="{{ path('ficha_new') }}">
-                Create a new entry
-            </a>
-        </li>
+        <a class="btn btn-mini" href="{{ path('ficha_new')}}">
+            {{ 'Crear una nueva ficha'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+        </a>
     </ul>
     {% endblock %}
