@@ -1,7 +1,3 @@
-proyecto_tecnico:
-    resource: "@ProyectoTecnicoBundle/Controller/"
-    type:     annotation
-    prefix:   /
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -20,3 +16,8 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+proyecto_tecnico:
+    resource: "@ProyectoTecnicoBundle/Controller/"
+    type:     annotation
+    prefix:   /

@@ -1,7 +1,7 @@
 <?php
 
 namespace Proyecto\TecnicoBundle\Entity;
-
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Proyecto\TecnicoBundle\Entity\UsuarioRepository")
  */
-class Usuario
+class Usuario extends BaseUser
 {
     /**
      * @var integer
@@ -19,16 +19,12 @@ class Usuario
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
+     public function __construct()
     {
-        return $this->id;
+        parent::__construct();
+        // your own logic
     }
 }
