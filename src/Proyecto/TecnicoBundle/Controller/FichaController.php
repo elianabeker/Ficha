@@ -19,10 +19,24 @@ use Proyecto\TecnicoBundle\Form\Ficha2Type;
  */
 class FichaController extends Controller
 {
+        /**
+     * Lists all Ficha entities.
+     *
+     * @Route("/")
+     */
+     public function welcomeAction()
+    {
+        /*
+         * The action's view can be rendered using render() method
+         * or @Template annotation as demonstrated in DemoController.
+         *
+         */
+        return $this->render('ProyectoTecnicoBundle:Default:index.html.twig');
+    }
     /**
      * Lists all Ficha entities.
      *
-     * @Route("/", name="ficha")
+     * @Route("/ficha/", name="ficha")
      * @Method("GET")
      * @Template()
      */
