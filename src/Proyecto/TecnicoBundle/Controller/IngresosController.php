@@ -42,6 +42,32 @@ class IngresosController extends Controller
             'entities' => $pagination,
         );
     }
+    
+        /**
+     * Lists all Ingresos entities.
+     *
+     * @Route("/egresos", name="egresos")
+     * @Method("GET")
+     * @Template("ProyectoTecnicoBundle:Ingresos:egresos.html.twig")
+     */
+    public function egresosAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a WHERE a.estado=2 ORDER BY a.id DESC";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        return array(
+            'entities' => $pagination,
+        );
+    }
 
     /**
      * Creates a new Ingresos entity.
@@ -220,29 +246,45 @@ class IngresosController extends Controller
         ;
     }
     
- /**
-     * Lists all Ingresos entities.
+     
+    /**
+     * Finds and displays a Autores entity.
      *
-     * @Route("/egresos", name="egresos")
-     * @Method("GET")
-     * @Template("ProyectoTecnicoBundle:Ingresos:index.html.twig"))
+     * @Route("/registrarsalidaajax", name="registrar_salida_ajax")
+     * @Template()
      */
-     public function egresosAction()
-    {
+    function registrarSalidaAction() {
+        $request = $this->getRequest();
+        $idIngreso = $request->get('idIngreso');
+        $estado = $request->get('estado');
+        
         $em = $this->getDoctrine()->getManager();
 
-        $dql   = "SELECT a FROM ProyectoTecnicoBundle:Ingresos a WHERE a.estado=2 ORDER BY a.id DESC";
-        $query = $em->createQuery($dql);
+        $entity = $em->getRepository('ProyectoTecnicoBundle:Ingresos')->find($idIngreso);
 
-        $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $this->get('request')->query->get('page', 1)/*page number*/,
-            10/*limit per page*/
-        );
+        if (!$entity) {
+            throw $this->createNotFoundException('No se encontro propuesta.');
+        }
 
-        return array(
-            'entities' => $pagination,
+        $entity->setEstado($estado);
+        $entity->setFechaSalida(new \DateTime('now'));
+        $em->persist($entity);
+        $em->flush();
+
+      
+            //$estado = 'Entregado';
+            //$botones = '<div></div>';
+            $alerta = '<div class="alert alert-success">Salida registrada satisfactoriamente.</div>';
+      
+
+        $json = array(
+            //'estado' => $estado,
+           'botones' => $botones,
+           'alerta' => $alerta
         );
+        $response = new Response(json_encode($json));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }

@@ -16,7 +16,7 @@
                 
                     <th{% if entities.isSorted('a.Fecha') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fecha', 'a.fecha') }}</th>
                     
-                
+                 <th{% if entities.isSorted('a.Dependencia') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Dependencia', 'a.dependencia') }}</th>
                     <th{% if entities.isSorted('a.Actuacionsimple') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Actuacionsimple', 'a.actuacionsimple') }}</th>
                     
                 
@@ -41,7 +41,7 @@
                                             
                     <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
 
-                
+                 <td>{{ entity.dependencia }}</td>
                                             
                     <td>{{ entity.actuacionSimple }}</td>
 
@@ -59,10 +59,8 @@
         <a class="btn btn-mini" href="{{ path('ingresos_show', { 'id': entity.id }) }}">
             {{ 'Ver'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
-            {{ 'Registrar Salida'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
-        </a>
-                            </td>
+                        
+        </td>
 
                             
                 </tr>

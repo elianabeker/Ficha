@@ -9,6 +9,7 @@
 
     <form class="well" action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.fecha) }}
+        {{ form_row(form.dependencia) }}
         {{ form_row(form.actuacionSimple) }}
         {{ form_row(form.observaciones) }}
         {{ form_row(form.bien.tipoBien) }}

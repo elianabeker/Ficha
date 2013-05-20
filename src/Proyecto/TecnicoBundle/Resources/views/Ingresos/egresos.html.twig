@@ -24,7 +24,7 @@
                     <th{% if entities.isSorted('a.Bien') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Nro Patrimonio', 'a.bien') }}</th>
                     <th{% if entities.isSorted('a.tipoBien') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Tipo de bien', 'a.tipoBien') }}</th>
                     <th{% if entities.isSorted('a.descripcion') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Descripcion del bien', 'a.descripcion') }}</th>
-                    <th{% if entities.isSorted('a.fechaSalida') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fecha de salida', 'a.fechaSalida') }}</th>
+                  <th{% if entities.isSorted('a.fechaSalida') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fecha de salida', 'a.fechaSalida') }}</th>
                     
                 
                     <th>Actions</th>
@@ -39,7 +39,7 @@
 
                 
                                             
-                    <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</td>
 
                 
                                             
@@ -52,16 +52,18 @@
                     <td>{{ entity.bien.nroPat }}</td>
                     <td>{{ entity.bien.tipoBien }}</td>     
                     <td>{{ entity.bien.descripcion }}</td> 
-                     <td>{{ entity.fechaSalida }}</td>         
+                    <td>{{ entity.fechaSalida|date('d-m-Y') }}</td> 
+                              
                 
                     <td>
                         
         <a class="btn btn-mini" href="{{ path('ingresos_show', { 'id': entity.id }) }}">
             {{ 'Ver'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
-        <a class="btn btn-mini" href="{{ path('ingresos_edit', { 'id': entity.id }) }}">
-            {{ 'Registrar Salida'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
-        </a>
+                        
+        </td>
+
+                            
                 </tr>
             {% endfor %}
             </tbody>
@@ -74,8 +76,14 @@
 
         <div class="span7">
         <a class="btn btn-primary likepaginator" href="{{ path('ingresos_new') }}">
-            {{ 'Registrar un nuevo ingreso'|trans({}, 'MWSimpleCrudGeneratorBundle') }} Ingresos
+            {{ 'Registrar un nuevo Ingreso'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
+        </a>
+                </div><div class="span7">
+        <a class="btn btn-primary likepaginator" href="{{ path('ficha_new') }}">
+            {{ 'Hacer una ficha'|trans({}, 'MWSimpleCrudGeneratorBundle') }} 
         </a>
     </div>
     </div>
+
+
 {% endblock %}

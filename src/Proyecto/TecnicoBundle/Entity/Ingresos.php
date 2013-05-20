@@ -62,7 +62,11 @@ class Ingresos
      */
     private $fechaSalida;
 
-
+     /**
+     * @ORM\ManyToOne(targetEntity="Dependencia")
+     */
+    private $dependencia;
+    
     /**
      * Get id
      *
@@ -212,5 +216,28 @@ class Ingresos
 
     public function __construct() {
         $this->ingreso = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+            /**
+     * Set dependencia
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
+     * @return Ingresos
+     */
+    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
+    {
+        $this->dependencia = $dependencia;
+    
+        return $this;
+    }
+
+    /**
+     * Get dependencia
+     *
+     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
+     */
+    public function getDependencia()
+    {
+        return $this->dependencia;
     }
 }

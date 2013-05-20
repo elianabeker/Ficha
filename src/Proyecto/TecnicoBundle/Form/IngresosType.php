@@ -15,16 +15,19 @@ class IngresosType extends AbstractType
                       'input'  => 'datetime',
                       'widget' => 'choice',
                       'format' => 'dd MM yyyy'))
+            ->add('dependencia','entity', array(
+                    'class' => 'ProyectoTecnicoBundle:Dependencia'))
             ->add('actuacionSimple')
             ->add('observaciones')
-            ->add('estado', 'choice', array(
-                        'choices' => array('1' => 'En mesa de entrada', 
-                                           '2' => 'Entregado',
-                                           '3' => 'Revisado')))
+//            ->add('estado', 'choice', array(
+//                        'choices' => array('1' => 'En mesa de entrada', 
+//                                           '2' => 'Entregado',
+//                                           '3' => 'Revisado')))
             ->add('fechaSalida')
             ->add('bien', new BienType())
         ;
     }
+    
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
