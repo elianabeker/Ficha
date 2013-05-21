@@ -64,12 +64,12 @@
     </div>
         {% if entity.estado== 1 %}
          <div class="float-left">
-                <a id="registrarsalida" class="btn btn-primary" href="{{ path('egresos') }}" onclick="buttonSalidaAction(2)">
+                <a id="registrarsalida" class="btn btn-primary" href="#" onclick="buttonSalidaAction(2)">
                     Registrar salida
                 </a>
          </div>
         {% endif %} 
-        
+
 <script type="text/javascript">
     function buttonSalidaAction(estado){
         $.ajax({

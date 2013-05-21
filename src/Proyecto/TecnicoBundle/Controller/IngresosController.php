@@ -266,7 +266,7 @@ class IngresosController extends Controller
             throw $this->createNotFoundException('No se encontro propuesta.');
         }
 
-        $entity->setEstado($estado);
+       // $entity->setEstado($estado);
         $entity->setFechaSalida(new \DateTime('now'));
         $em->persist($entity);
         $em->flush();
@@ -279,7 +279,7 @@ class IngresosController extends Controller
 
         $json = array(
             //'estado' => $estado,
-           'botones' => $botones,
+          // 'botones' => $botones,
            'alerta' => $alerta
         );
         $response = new Response(json_encode($json));
@@ -287,4 +287,4 @@ class IngresosController extends Controller
 
         return $response;
     }
-}
+        }

@@ -2,7 +2,42 @@
 
 {% block body -%}
     <h1>Listar Fichas</h1>
+    
+    {#
+    <div class="span2">
+        {% if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+        &nbsp;
+    </div>
+    <div class="span2">
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                {{ 'views.index.filters'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}
+                <span class="caret"></span>
+            </a>
+        </div>
+    </div>
 
+    <div class="span12">
+        <div id="filters" class="collapse">
+
+            <form class="well" action="{{ path('ficha') }}" method="post" {{ form_enctype(filterForm) }}>
+                {{ form_row(filterForm.id) }}
+                {{ form_row(filterForm.nroPat) }}
+                {{ form_rest(filterForm) }}
+
+                <p>
+                    <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                    <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+    #}
    <Table  clase = "mesa de ping-confinada" >
         <thead>
             <tr>

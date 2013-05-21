@@ -33,6 +33,7 @@ class FichaController extends Controller
          */
         return $this->render('ProyectoTecnicoBundle:Default:index.html.twig');
     }
+    
     /**
      * Lists all Ficha entities.
      *
@@ -99,7 +100,7 @@ class FichaController extends Controller
         );
     }
     
-   
+        
     /**
      * Finds and displays a Ficha entity.
      *
@@ -227,4 +228,46 @@ class FichaController extends Controller
             ->getForm()
         ;
     }
+    
+//    /**
+//    * Create filter form and process filter request.
+//    *
+//    */
+//    protected function filter()
+//    {
+//        $request = $this->getRequest();
+//        $session = $request->getSession();
+//        $filterForm = $this->createForm(new FichaFilterType());
+//        $em = $this->getDoctrine()->getManager();
+//        $queryBuilder = $em->getRepository('ProyectoTecnicoBundle:Ficha')->createQueryBuilder('e');
+//    
+//        // Reset filter
+//        if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'reset') {
+//            $session->remove('FichaControllerFilter');
+//        }
+//    
+//        // Filter action
+//        if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'filter') {
+//            // Bind values from the request
+//            $filterForm->bind($request);
+//
+//            if ($filterForm->isValid()) {
+//                // Build the query from the given form object
+//                $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
+//                // Save filter to session
+//                $filterData = $filterForm->getData();
+//                $session->set('ClienteControllerFilter', $filterData);
+//            }
+//        } else {
+//            // Get filter from session
+//            if ($session->has('FichaControllerFilter')) {
+//                $filterData = $session->get('FichaControllerFilter');
+//                $filterForm = $this->createForm(new FichaFilterType(), $filterData);
+//                $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
+//            }
+//        }
+//    
+//        return array($filterForm, $queryBuilder);
+//    }
+
 }
