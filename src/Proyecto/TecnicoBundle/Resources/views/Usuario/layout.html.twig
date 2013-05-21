@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ficha Tecnica Web</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/mos-css/mos-style.css') }}">
+    </head>
+    <body>
+        <div id="header">
+	<div class="inHeader">
+		<div class="mosAdmin">
+		 Bienvenido Administrador<br>
+		</div>
+	</div>
+</div>
+            <div>
+                <h1>  Bienvenido  </h1>
+                
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+</div>
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>
+</html>

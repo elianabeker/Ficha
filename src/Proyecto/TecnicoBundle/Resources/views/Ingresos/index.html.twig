@@ -12,11 +12,11 @@
                 <tr>
                 
                     <th{% if entities.isSorted('a.Id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Id', 'a.id') }}</th>
-                    
+                
                 
                     <th{% if entities.isSorted('a.Fecha') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Fecha', 'a.fecha') }}</th>
                     
-                 <th{% if entities.isSorted('a.Dependencia') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Dependencia', 'a.dependencia') }}</th>
+                    <th{% if entities.isSorted('a.Dependencia') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Dependencia', 'a.dependencia') }}</th>
                     <th{% if entities.isSorted('a.Actuacionsimple') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'Actuacionsimple', 'a.actuacionsimple') }}</th>
                     
                 
