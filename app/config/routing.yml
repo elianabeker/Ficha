@@ -21,3 +21,4 @@ proyecto_tecnico:
     resource: "@ProyectoTecnicoBundle/Controller/"
     type:     annotation
     prefix:   /
+    

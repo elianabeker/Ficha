@@ -10,6 +10,11 @@ _demo:
     resource: "@AcmeDemoBundle/Controller/DemoController.php"
     type:     annotation
     prefix:   /demo
+    
+_prueba:
+    resource: "@AcmeDemoBundle/Controller/PruebaController.php"
+    type:     annotation
+    prefix:   /
 
 _wdt:
     resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"

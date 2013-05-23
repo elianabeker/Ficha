@@ -8,14 +8,17 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormError;
+use Lexik\Bundle\FormFilterBundle\Filter\ORM\Expr;
+use Doctrine\ORM\QueryBuilder;
 
-class ClienteFilterType extends AbstractType
+class FichaFilterType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+   
+   public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', 'filter_number_range')
-            ->add('nroPat', 'filter_text')
+            ->add('id', 'filter_number',array('label'=> 'Id'))
+            ->add('solicitado', 'filter_text')
         ;
 
         $listener = function(FormEvent $event)
