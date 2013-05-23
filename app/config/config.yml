@@ -84,3 +84,4 @@ fos_user:
     firewall_name: main
     # el namespace de tu clase 'User' específica
     user_class:    Proyecto\TecnicoBundle\Entity\Usuario
+    

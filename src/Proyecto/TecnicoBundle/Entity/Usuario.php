@@ -22,9 +22,18 @@ class Usuario extends BaseUser
     protected $id;
 
 
-     public function __construct()
+     /**
+     * Agrega un rol al usuario.
+     * @throws Exception
+     * @param Rol $rol 
+     */
+    public function addRole( $rol )
     {
-        parent::__construct();
-        // your own logic
+	if($rol == 1) {
+	  array_push($this->roles, 'ROLE_ADMIN');
+	}
+	else if($rol == 2) {
+	  array_push($this->roles, 'ROLE_USER');
+	}
     }
 }
