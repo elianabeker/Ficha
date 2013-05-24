@@ -16,6 +16,8 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 
+use Ps\PdfBundle\Annotation\Pdf;
+
 /**
  * Ficha controller.
  *
@@ -30,28 +32,29 @@ class FichaController extends Controller
      */
      public function welcomeAction()
     {
-        /*
-         * The action's view can be rendered using render() method
-         * or @Template annotation as demonstrated in DemoController.
-         *
-         */
-        return $this->render('ProyectoTecnicoBundle:Default:index.html.twig');
+       return $this->render('ProyectoTecnicoBundle:Default:index.html.twig');
     }
     
-    /**
+     /**
      * Lists all Ficha entities.
      *
      * @Route("/ficha/", name="ficha")
      * @Method("GET")
      * @Template()
+      * @Pdf()
      */
     public function indexAction()
     {
         list($filterForm, $queryBuilder) = $this->filter();
 
         list($entities, $pagerHtml) = $this->paginator($queryBuilder);
-
+        
+     //   $format = $this->get('request')->get('_format');
     
+        
+//        return $this->render(sprintf('TecnicoBundle:FichaController:indexAction.%s.twig', $format), array(
+//         'entities' => $entities,
+//    ));
         return array(
             'entities' => $entities,
             'pagerHtml' => $pagerHtml,
@@ -70,7 +73,7 @@ class FichaController extends Controller
         $filterForm = $this->createForm(new FichaFilterType());
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('ProyectoTecnicoBundle:Ficha')->createQueryBuilder('e');
-    
+      
         // Reset filter
         if ($request->getMethod() == 'POST' && $request->get('filter_action') == 'reset') {
             $session->remove('FichaControllerFilter');

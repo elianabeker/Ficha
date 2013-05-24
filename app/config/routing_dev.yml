@@ -11,11 +11,6 @@ _demo:
     type:     annotation
     prefix:   /demo
     
-_prueba:
-    resource: "@AcmeDemoBundle/Controller/PruebaController.php"
-    type:     annotation
-    prefix:   /
-
 _wdt:
     resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
     prefix:   /_wdt

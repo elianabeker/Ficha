@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Ps\PdfBundle\PsPdfBundle(),
             );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

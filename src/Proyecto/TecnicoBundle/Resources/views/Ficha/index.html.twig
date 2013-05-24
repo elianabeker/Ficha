@@ -17,9 +17,11 @@
 
             <form class="well form-inline" action="{{ path('ficha') }}" method="get" {{ form_enctype(filterForm) }}>
                 
-                 {{ form_row(filterForm.id) }}
+                {{ form_row(filterForm.id) }}
                 {{ form_row(filterForm.solicitado) }}
                 {{ form_rest(filterForm) }}
+               
+               
                     <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
                     <button type="submit" name="filter_action" value="reset">{{ 'views.index.reset'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>
             </form>
@@ -67,10 +69,7 @@
         </tbody>
     </table>
 
-        <div class="span4">
-    {{ pagerHtml|raw }}
-    </div>
-    
+   
         <ul>
         <a class="btn btn-mini" href="{{ path('ficha_new')}}">
             {{ 'Crear una nueva ficha'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
