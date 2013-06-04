@@ -16,7 +16,7 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrapView;
 
-use Ps\PdfBundle\Annotation\Pdf;
+//use Ps\PdfBundle\Annotation\Pdf;
 
 /**
  * Ficha controller.
@@ -41,7 +41,6 @@ class FichaController extends Controller
      * @Route("/ficha/", name="ficha")
      * @Method("GET")
      * @Template()
-      * @Pdf()
      */
     public function indexAction()
     {
@@ -313,5 +312,33 @@ class FichaController extends Controller
     }
     
     
+        /**
+     * Creates a new Ficha entity.
+     *
+     * @Route("/{bienid}/fichanueva", name="fichaconid")
+     * @Template("ProyectoTecnicoBundle:Ficha:new.html.twig")
+     */
+    private function crearFichaconId($bienid)
+     {           
+        $entity = new Ficha(); 
+        //$bien = new BienType();
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $bien = $em->getRepository('ProyectoTecnicoBundle:bien')->find($bienid);
+
+        $entity->setFecha(new \DateTime('now'));
+        $entity->setBien()->$bien;
+
+        $form   = $this->createForm(new FichaType(), $entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
+        
+        
+     
+
 
 }

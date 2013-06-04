@@ -67,6 +67,11 @@ class Ingresos
      */
     private $dependencia;
     
+     /**
+     * @ORM\OneToMany(targetEntity="Ficha" , mappedBy="ingreso")
+     */
+    private $ficha;
+    
     /**
      * Get id
      *
@@ -239,5 +244,28 @@ class Ingresos
     public function getDependencia()
     {
         return $this->dependencia;
+    }
+    
+     /**
+     * Set ficha
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Ficha $ficha
+     * @return Ingresos
+     */
+    public function setFicha(\Proyecto\TecnicoBundle\Entity\Ficha $ficha = null)
+    {
+        $this->ficha = $ficha;
+    
+        return $this;
+    }
+
+    /**
+     * Get ficha
+     *
+     * @return \Proyecto\TecnicoBundle\Entity\Ficha 
+     */
+    public function getFicha()
+    {
+        return $this->ficha;
     }
 }

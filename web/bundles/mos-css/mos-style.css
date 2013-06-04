@@ -115,7 +115,7 @@ tr.data:hover small {color: #5b5b5b;}
 }
 .inHeader {
 	float: center;
-	background: url(img/camara-logo.gif) no-repeat left center;
+	background: url(img/camara-logo.png) no-repeat left center;
 	margin: auto;
 	width: 920px;
 	height: 45px;
@@ -136,6 +136,14 @@ tr.data:hover small {color: #5b5b5b;}
 	background: url(img/Administrator.png) no-repeat right center;
 	text-shadow: 1px 1px #fff;
 }
+
+.encabezadoReporte{
+    margin: 0 2px 0 auto;
+    background: url(img/camara-logo.png) no-repeat left center;
+    width: 920px;
+    height: 45px;
+}
+
 #loginForm {
 	width: 400px;
 	height: 250px;
@@ -147,6 +155,7 @@ tr.data:hover small {color: #5b5b5b;}
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-o-border-radius: 5px;
+        alignment-adjust: auto;
 }
 .headLoginForm {
 	width: 380px;

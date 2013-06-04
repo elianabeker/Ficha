@@ -19,7 +19,7 @@
                 
                 {{ form_row(filterForm.id) }}
                 {{ form_row(filterForm.solicitado) }}
-                {{ form_rest(filterForm) }}
+                {{ form_row(filterForm._token) }}
                
                
                     <button type="submit" name="filter_action" value="filter">{{ 'views.index.filter'|trans({}, 'JordiLlonchCrudGeneratorBundle') }}</button>

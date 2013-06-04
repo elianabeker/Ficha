@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Proyecto\TecnicoBundle\Entity\Ingresos;
 use Proyecto\TecnicoBundle\Form\IngresosType;
+use Ps\PdfBundle\Annotation\Pdf;
 
 /**
  * Ingresos controller.
@@ -123,6 +124,7 @@ class IngresosController extends Controller
      * @Route("/{id}", name="ingresos_show")
      * @Method("GET")
      * @Template()
+)
      */
     public function showAction($id)
     {
@@ -266,25 +268,46 @@ class IngresosController extends Controller
             throw $this->createNotFoundException('No se encontro propuesta.');
         }
 
-       // $entity->setEstado($estado);
+        $entity->setEstado($estado);
         $entity->setFechaSalida(new \DateTime('now'));
         $em->persist($entity);
         $em->flush();
 
+        $alerta = '<div class="alert alert-success">Salida registrada satisfactoriamente.</div>';
       
-            //$estado = 'Entregado';
-            //$botones = '<div></div>';
-            $alerta = '<div class="alert alert-success">Salida registrada satisfactoriamente.</div>';
-      
-
-        $json = array(
-            //'estado' => $estado,
-          // 'botones' => $botones,
+       $json = array(
            'alerta' => $alerta
         );
         $response = new Response(json_encode($json));
         $response->headers->set('Content-Type', 'application/json');
 
-        return $response;
+     return $response;
     }
-        }
+    
+//    
+//     /**
+//     * Reporte de ingreso
+//     * 
+//     * @Route("/{id}/reporte", name="ingreso_reporte")
+//     * @Template()
+//      * @Pdf
+//     */
+//      public function reporteIngresoAction($id)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $entity = $em->getRepository('ProyectoTecnicoBundle:Ingresos')->find($id);
+//       
+//        if (!$entity) {
+//            throw $this->createNotFoundException('Unable to find CierreCaja entity.');
+//        }
+//        
+//        $contenido = $this->renderView('ProyectoTecnicoBundle:Ingresos:reporteIngreso.pdf.twig', array(
+//            'entity'    => $entity,
+//        ));
+//
+//        return $this->render(sprintf('ProyectoTecnicoBundle:Ingresos:reporteIngreso.pdf.twig', $contenido), array(
+//         'entity'    => $entity,
+//                 ));
+//    }
+}
