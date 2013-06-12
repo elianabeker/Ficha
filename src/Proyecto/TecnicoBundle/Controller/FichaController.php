@@ -335,10 +335,10 @@ class FichaController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-    }
-        
-        
+ }
+
+
      
 
 
-}
+    }
