@@ -10,14 +10,18 @@
 <script src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
     </head>
 <body>
+
 <div id="header">
 	<div class="inHeader">
 		<div class="mosAdmin">
-		 Bienvenido Administrador<br>
+		Bienvenido Administrador<br>
 		</div>
+	<div class="clear"></div>
 	</div>
 </div>
-        <div class="row">
+    
+{% block menu %}     
+<div class="row">
 <div id="wrapper">
 	<div id="leftBar">   
 	<ul>
@@ -30,12 +34,17 @@
 	<div id="rightContent">
             <div class="span8">
             <body>
-        {% block body %}{% endblock %}
+        
           </body>
           </div>
 	</div>
-		
-	<div class="clear"></div>
+{% endblock menu%} 		
+     
+{% block body %}{% endblock %}       
+
+{% block fos_user_content %}{% endblock fos_user_content %} 
+
+<div class="clear"></div>
 <div id="footer">
 	Camara de Diputados de la Provincia del Chaco
         <br> Direccion de Comunicaciones

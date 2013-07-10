@@ -1,6 +1,6 @@
-{% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block page %}
+{% block body %}
 <div class="row">
     <div class="span8">
         <h1>Ingresos</h1>
@@ -81,10 +81,10 @@
         <a class="btn btn-primary likepaginator" href="{{ path('ficha_new') }}">
             {{ 'Hacer una ficha'|trans({}, 'MWSimpleCrudGeneratorBundle') }} 
         </a>
-                        
+       {#                 
           <a class="btn btn-primary likepaginator" href="{{ path('reporte_ingresos') }}">
             {{ 'Reporte'|trans({}, 'MWSimpleCrudGeneratorBundle') }} 
-        </a>
+        </a> #}
     </div>
     </div>
 {% endblock %}
