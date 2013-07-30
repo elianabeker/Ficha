@@ -44,7 +44,7 @@ class Ingresos
     /**
      * @var string
      *
-     * @ORM\Column(name="Observaciones", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Observaciones", type="text", length=255, nullable=true)
      */
     private $observaciones;
 
@@ -66,6 +66,13 @@ class Ingresos
      * @ORM\ManyToOne(targetEntity="Dependencia")
      */
     private $dependencia;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Solicitado", type="string", length=255, nullable=true)
+     */
+    private $solicitado;
     
      /**
      * @ORM\OneToMany(targetEntity="Ficha" , mappedBy="ingreso")
@@ -267,5 +274,28 @@ class Ingresos
     public function getFicha()
     {
         return $this->ficha;
+    }
+    
+        /**
+     * Set solicitado
+     *
+     * @param string $observaciones
+     * @return Ingresos
+     */
+    public function setSolicitado($solicitado)
+    {
+        $this->solicitado = $solicitado;
+    
+        return $this;
+    }
+
+    /**
+     * Get solicitado
+     *
+     * @return string 
+     */
+    public function getSolicitado()
+    {
+        return $this->solicitado;
     }
 }

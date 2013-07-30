@@ -34,7 +34,7 @@ class FichaController extends Controller
     {
        return $this->render('ProyectoTecnicoBundle:Default:index.html.twig');
     }
-    
+   
      /**
      * Lists all Ficha entities.
      *
@@ -312,33 +312,32 @@ class FichaController extends Controller
     }
     
     
-        /**
-     * Creates a new Ficha entity.
-     *
-     * @Route("/{bienid}/fichanueva", name="fichaconid")
-     * @Template("ProyectoTecnicoBundle:Ficha:new.html.twig")
-     */
-    private function crearFichaconId($bienid)
-     {           
-        $entity = new Ficha(); 
-        //$bien = new BienType();
-
-            $em = $this->getDoctrine()->getEntityManager();
-            $bien = $em->getRepository('ProyectoTecnicoBundle:bien')->find($bienid);
-
-        $entity->setFecha(new \DateTime('now'));
-        $entity->setBien()->$bien;
-
-        $form   = $this->createForm(new FichaType(), $entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+  
  }
-
-
-     
-
-
-    }
+//  /**
+//     * Creates a new Reconocimiento entity.
+//     *
+//     * @Route("/fichanueva/create/{ingresoid}", name="create_ficha")
+//     * @Method("post")
+//     * @Template("ProyectoTecnicoBundle:Ficha:new.html.twig")
+//     */
+//    public function reconocimientoCreateAction($idInasistencia)
+//    {
+//       $entity  = new Ficha();
+//        $form = $this->createForm(new FichaType(), $entity);
+//        $form->bind($request);
+//
+//        if ($form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($entity);
+//            $em->flush();
+//
+//            return $this->redirect($this->generateUrl('ficha_show', array('id' => $entity->getId())));
+//        }
+//
+//        return array(
+//            'entity' => $entity,
+//            'form'   => $form->createView(),
+//        );
+//    }
+  

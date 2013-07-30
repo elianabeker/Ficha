@@ -12,8 +12,10 @@ class BienType extends AbstractType
     {
         $builder
             ->add('nroPat')
-            ->add('descripcion')
-            ->add('tipoBien')
+            ->add('descripcion',null, array(
+                    'label'=> 'Descripcion (Marca, Modelo, etc)'))
+            ->add('tipoBien',null, array(
+                    'label'=> 'Tipo de bien'))
             //->add('ficha')
         ;
     }

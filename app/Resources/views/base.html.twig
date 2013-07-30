@@ -14,12 +14,12 @@
 <div id="header">
 	<div class="inHeader">
 		<div class="mosAdmin">
-		Bienvenido Administrador<br>
+		Bienvenido <br>
 		</div>
 	<div class="clear"></div>
 	</div>
 </div>
-    
+    {% block fos_user_content %}
 {% block menu %}     
 <div class="row">
 <div id="wrapper">
@@ -42,7 +42,7 @@
      
 {% block body %}{% endblock %}       
 
-{% block fos_user_content %}{% endblock fos_user_content %} 
+{% endblock fos_user_content %} 
 
 <div class="clear"></div>
 <div id="footer">

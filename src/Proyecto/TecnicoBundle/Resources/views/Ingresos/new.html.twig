@@ -1,31 +1,61 @@
-{% extends 'MWSimpleCrudGeneratorBundle::layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block title %}
 {{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}
 {% endblock %}
 
-{% block page %}
+{% block body -%}
 	<h1>{{ 'views.new.creation'|trans({'%entity%': 'Ingresos'}, 'MWSimpleCrudGeneratorBundle') }}</h1>
 
     <form class="well" action="{{ path('ingresos_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_row(form.fecha) }}
+        {{ form_row(form.solicitado) }}    
         {{ form_row(form.dependencia) }}
         {{ form_row(form.actuacionSimple) }}
-        {{ form_row(form.bien.tipoBien) }}
-        {{ form_row(form.bien.nroPat) }}
-        {{ form_row(form.bien.descripcion) }}
-        {{ form_row(form.observaciones) }}
-
+           
+         Ingrese nro de patrimonio: 
+         <input type="text" id="nroPat">
+         
+         
+         
         {{ form_row(form._token) }}
         <p>
             <button type="submit" class="btn btn-success">{{ 'views.new.create'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>
     </form>
-
+   <div id="Bien">
+            </div>
         <div>
     <div class="float-left">
         <a class="btn" href="{{ path('ingresos') }}">
             {{ 'views.recordactions.backtothelist'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
     </div>
+              
+    <script >
+        $('#nroPat').focusout(function() {
+           $.ajax({
+            type:'POST',
+            url: "{{path('ingreso_ajax')}}",
+            data: { nroPat: $('#nroPat').val()} 
+    
+        });
+         });
+        </script> 
+        
+        
+        {#$.ajax({
+            type:'POST',
+            url: "{{path('ingreso_ajax')}}",
+            data: { nroPat: $('#proyecto_tecnicobundle_ingresostype_bien_nroPat').val()}
+          }).done(function( msg ) { 
+        
+            $('#proyecto_tecnicobundle_ingresostype_bien_descripcion').val(msg[0].descripcion);
+            $('#proyecto_tecnicobundle_ingresostype_bien_tipoBien').val(msg[0].tipoBien);
+           
+});
+});
+});
+
+  #}  
 </div>{% endblock %}

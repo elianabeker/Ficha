@@ -30,7 +30,7 @@ class Bien
     /**
      * @var integer
      *
-     * @ORM\Column(name="NroPat", type="integer")
+     * @ORM\Column(name="NroPat", type="string" )
      */
     private $nroPat;
 
@@ -41,11 +41,7 @@ class Bien
      */
     private $descripcion;
     
-     /**
-     * @ORM\OneToMany(targetEntity="Ingresos", mappedBy="bien")
-     */
-    private $ingresos;
-    
+
      /**
      * Get id
      *
@@ -127,6 +123,6 @@ class Bien
     
             
     public function __toString() {
-        return $this->descripcion;
+        return $this->nroPat;
     }
 }

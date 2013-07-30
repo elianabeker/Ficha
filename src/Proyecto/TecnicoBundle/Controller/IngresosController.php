@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Proyecto\TecnicoBundle\Entity\Ingresos;
 use Proyecto\TecnicoBundle\Form\IngresosType;
-use Ps\PdfBundle\Annotation\Pdf;
+//use Ps\PdfBundle\Annotation\Pdf;
 
 /**
  * Ingresos controller.
@@ -80,6 +80,7 @@ class IngresosController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Ingresos();
+        
         $form = $this->createForm(new IngresosType(), $entity);
         $form->bind($request);
 
@@ -117,7 +118,7 @@ class IngresosController extends Controller
             'form'   => $form->createView(),
         );
     }
-
+  
     /**
      * Finds and displays a Ingresos entity.
      *
@@ -284,30 +285,34 @@ class IngresosController extends Controller
      return $response;
     }
     
-//    
-//     /**
-//     * Reporte de ingreso
-//     * 
-//     * @Route("/{id}/reporte", name="ingreso_reporte")
-//     * @Template()
-//      * @Pdf
-//     */
-//      public function reporteIngresoAction($id)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('ProyectoTecnicoBundle:Ingresos')->find($id);
-//       
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find CierreCaja entity.');
-//        }
-//        
-//        $contenido = $this->renderView('ProyectoTecnicoBundle:Ingresos:reporteIngreso.pdf.twig', array(
-//            'entity'    => $entity,
-//        ));
-//
-//        return $this->render(sprintf('ProyectoTecnicoBundle:Ingresos:reporteIngreso.pdf.twig', $contenido), array(
-//         'entity'    => $entity,
-//                 ));
-//    }
+       /**
+     * Finds and displays a Bien entity.
+     *
+     * @Route("/ingresoAjax", name="ingreso_ajax")
+     * @Template()
+     */
+    function getBienAction() {
+        
+        $nroPat = $this->getRequest()->get('nroPat');
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ProyectoTecnicoBundle:Bien')->findOneBy(array('nroPat' => $nroPat));
+     
+       
+        if (!$entity) {
+            //no existe bien, hay que crearlo
+             $entity = new Bien();
+             $form = $this->createForm(new BienType(), $entity);}
+             
+             
+        else {  
+            //existe el bien, hay que editarlo
+            $form = $this->createForm(new BienType(), $entity);
+             }
+               
+               
+             return $this->render('ProyectoTecnicoBundle:Ingresos:formBienAjax.html.twig', array(
+                  'form' => $form->createView(),
+    ));
+
+    }
 }

@@ -15,16 +15,20 @@ class IngresosType extends AbstractType
                       'input'  => 'datetime',
                       'widget' => 'choice',
                       'format' => 'dd MM yyyy'))
+            ->add('solicitado',null, array(
+                    'label'=> 'Solicitado por') )   
             ->add('dependencia','entity', array(
                     'class' => 'ProyectoTecnicoBundle:Dependencia'))
-            ->add('actuacionSimple')
-            ->add('observaciones')
+            ->add('actuacionSimple',null, array(
+                    'label'=> 'Actuacion Simple'))
+            ->add('observaciones',null, array(
+                    'label'=> 'Observaciones (Motivo del ingreso o alguna aclaracion que resulte conveniente'))
 //            ->add('estado', 'choice', array(
 //                        'choices' => array('1' => 'En mesa de entrada', 
 //                                           '2' => 'Entregado',
 //                                           '3' => 'Revisado')))
             ->add('fechaSalida')
-            ->add('bien', new BienType())
+           // ->add('bien', new BienType())
         ;
     }
     
