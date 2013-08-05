@@ -54,9 +54,9 @@ class Ficha
 
     /**
      * @ORM\ManyToMany(targetEntity="Componentes")
-     * @ORM\JoinTable(name="ficha_componente")
+     * @ORM\JoinTable(name="ficha_componente" ))
      *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="componente_id", referencedColumnName="id")}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="componente_id", referencedColumnName="id" , nullable=false)}
      *      )
      */
     private $componentes;

@@ -44,6 +44,7 @@ class IngresosController extends Controller
         );
     }
     
+
         /**
      * Lists all Ingresos entities.
      *
@@ -285,34 +286,30 @@ class IngresosController extends Controller
      return $response;
     }
     
-       /**
-     * Finds and displays a Bien entity.
+ 
+           /**
      *
      * @Route("/ingresoAjax", name="ingreso_ajax")
      * @Template()
      */
-    function getBienAction() {
+    function ingresoAjaxAction() {
         
-        $nroPat = $this->getRequest()->get('nroPat');
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('ProyectoTecnicoBundle:Bien')->findOneBy(array('nroPat' => $nroPat));
-     
-       
-        if (!$entity) {
-            //no existe bien, hay que crearlo
-             $entity = new Bien();
-             $form = $this->createForm(new BienType(), $entity);}
-             
-             
-        else {  
-            //existe el bien, hay que editarlo
-            $form = $this->createForm(new BienType(), $entity);
-             }
-               
-               
-             return $this->render('ProyectoTecnicoBundle:Ingresos:formBienAjax.html.twig', array(
-                  'form' => $form->createView(),
-    ));
+        $descripcion="hola";
+        $tipoBien=1;
+        
+        
+      $json = array(
+           'descripcion' => $descripcion,
+           'tipoBien' => $tipoBien,
+                );
+      
+       $response = new Response(json_encode($json));
+        $response->headers->set('Content-Type', 'application/json');
 
-    }
+        return $response;
+      
+
+   }
+    
+    
 }

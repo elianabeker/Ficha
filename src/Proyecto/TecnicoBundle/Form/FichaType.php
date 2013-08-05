@@ -17,8 +17,8 @@ class FichaType extends AbstractType
                 'type'         => new BienType(),
                 'allow_add'    => true,
                 'by_reference' => false,))
-            ->add('trabajo')
-            ->add('componentes')
+            ->add('trabajo',null)
+            ->add('componentes',null)
             ->add('realizado')
             ->add('fecha',
                     'date', array(

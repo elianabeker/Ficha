@@ -15,16 +15,23 @@
            
          Ingrese nro de patrimonio: 
          <input type="text" id="nroPat">
-         
-         
-         
+               <div id="Bien">
+                <br> Descripcion </br>   
+                <input type="text"  id="descripcion" >
+                <br> Tipo de bien </br> 
+                <select id=tipoBien>
+                    <option value=1>Impresora</option>
+                    <option value=2>CPU</option>
+                    <option value=3>Monitor</option>
+                </select>
+               </div>
+              
         {{ form_row(form._token) }}
         <p>
             <button type="submit" class="btn btn-success">{{ 'views.new.create'|trans({}, 'MWSimpleCrudGeneratorBundle') }}</button>
         </p>
     </form>
-   <div id="Bien">
-            </div>
+
         <div>
     <div class="float-left">
         <a class="btn" href="{{ path('ingresos') }}">
@@ -32,30 +39,30 @@
         </a>
     </div>
               
-    <script >
-        $('#nroPat').focusout(function() {
-           $.ajax({
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            
+        $('#Bien').attr('hidden',true);
+        
+        $('#nroPat').focusout(function(){
+        
+            $.ajax({
             type:'POST',
-            url: "{{path('ingreso_ajax')}}",
-            data: { nroPat: $('#nroPat').val()} 
-    
-        });
+            url: "{{path('ingreso_ajax')}}"
+            //data: { nroPat: $('#nroPat').val()}
+            }).done(function ( json ){ 
+          // alert( "Data Saved: " + nroPat );
+            $('#Bien').attr('hidden',false);
+            $('#descripcion').val(json.descripcion);
+            $('#tipoBien').val(json.tipoBien);
+                        
+             
+          
          });
+         }); });
         </script> 
         
         
-        {#$.ajax({
-            type:'POST',
-            url: "{{path('ingreso_ajax')}}",
-            data: { nroPat: $('#proyecto_tecnicobundle_ingresostype_bien_nroPat').val()}
-          }).done(function( msg ) { 
         
-            $('#proyecto_tecnicobundle_ingresostype_bien_descripcion').val(msg[0].descripcion);
-            $('#proyecto_tecnicobundle_ingresostype_bien_tipoBien').val(msg[0].tipoBien);
-           
-});
-});
-});
-
-  #}  
 </div>{% endblock %}
