@@ -14,7 +14,7 @@
         {{ form_row(form.actuacionSimple) }}
            
          Ingrese nro de patrimonio: 
-         <input type="text" id="nroPat">
+         <input type="integer" id="nroPat">
                <div id="Bien">
                 <br> Descripcion </br>   
                 <input type="text"  id="descripcion" >
@@ -38,31 +38,28 @@
             {{ 'views.recordactions.backtothelist'|trans({}, 'MWSimpleCrudGeneratorBundle') }}
         </a>
     </div>
-              
-    <script type="text/javascript">
-        
-        $(document).ready(function(){
-            
-        $('#Bien').attr('hidden',true);
-        
-        $('#nroPat').focusout(function(){
-        
-            $.ajax({
+
+   
+<script type="text/javascript">
+     $(document).ready(function(){
+         //Inicialmente oculto los datos del autor
+    $('#Bien').attr('hidden',true);
+  
+        //luego via ajax busco los datos y habilito los campos
+    $('#nroPat').focusout(function(){
+        $.ajax({
             type:'POST',
-            url: "{{path('ingreso_ajax')}}"
-            //data: { nroPat: $('#nroPat').val()}
-            }).done(function ( json ){ 
-          // alert( "Data Saved: " + nroPat );
-            $('#Bien').attr('hidden',false);
-            $('#descripcion').val(json.descripcion);
-            $('#tipoBien').val(json.tipoBien);
-                        
-             
-          
-         });
-         }); });
-        </script> 
-        
-        
-        
+            url: "{{path('ingreso_ajax')}}",
+              data:  { nroPat: $('#nroPat').val()}
+          }).done(function( msg ) {
+            //alert( "Data Saved: " + msg );
+           $('#Bien').attr('hidden',false);
+            $('#descripcion').val(msg[0].descripcion);
+            $('#tipoBien').val(msg[0].tipoBien);
+              });
+    });
+   
+    })
+    </script>    
+
 </div>{% endblock %}

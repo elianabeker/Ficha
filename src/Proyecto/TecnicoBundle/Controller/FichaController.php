@@ -28,7 +28,7 @@ class FichaController extends Controller
         /**
      * Lists all Ficha entities.
      *
-     * @Route("/")
+     * @Route("/welcome")
      */
      public function welcomeAction()
     {
@@ -38,7 +38,7 @@ class FichaController extends Controller
      /**
      * Lists all Ficha entities.
      *
-     * @Route("/ficha/", name="ficha")
+     * @Route("/ficha", name="ficha")
      * @Method("GET")
      * @Template()
      */

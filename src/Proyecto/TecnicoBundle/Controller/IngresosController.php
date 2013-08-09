@@ -286,30 +286,27 @@ class IngresosController extends Controller
      return $response;
     }
     
- 
-           /**
+     /**
      *
      * @Route("/ingresoAjax", name="ingreso_ajax")
      * @Template()
      */
     function ingresoAjaxAction() {
         
-        $descripcion="hola";
-        $tipoBien=1;
+    
+        $nroPat = $this->getRequest()->get('nroPat');
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ProyectoTecnicoBundle:Bien')->findBy($nroPat);
         
-        
-      $json = array(
-           'descripcion' => $descripcion,
-           'tipoBien' => $tipoBien,
-                );
-      
-       $response = new Response(json_encode($json));
+        if (!$entity) {
+            $entity[] = array('nroPat' => $nroPat);
+        }      
+
+        $response = new Response(json_encode($entity));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-      
-
-   }
-    
+   
+}
     
 }
