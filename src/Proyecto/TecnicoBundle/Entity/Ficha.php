@@ -4,6 +4,7 @@ namespace Proyecto\TecnicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ficha
@@ -44,20 +45,14 @@ class Ficha
     private $bien;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Trabajos", cascade={"persist"})
-     * @ORM\JoinTable(name="ficha_trabajo")
-     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="trabajo_id", referencedColumnName="id")}
-     *      )
+     * @ORM\OneToMany(targetEntity="Trabajos", mappedBy="ficha")
+     * @ORM\Column(nullable=true)
      */
     private $trabajo;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Componentes")
-     * @ORM\JoinTable(name="ficha_componente" ))
-     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="componente_id", referencedColumnName="id" , nullable=false)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Componentes", mappedBy="ficha")
+     * @ORM\Column(nullable=true)
      */
     private $componentes;
 
@@ -276,16 +271,6 @@ class Ficha
         return $this;
     }
 
-    /**
-     * Remove componentes
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Componentes $componentes
-     */
-    public function removeComponente(\Proyecto\TecnicoBundle\Entity\Componentes $componentes)
-    {
-        $this->componentes->removeElement($componentes);
-    }
-    
         /**
      * Set dependencia
      *
