@@ -10,6 +10,8 @@ use Acme\DemoBundle\Form\ContactType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Ps\PdfBundle\Annotation\Pdf;
+
 class DemoController extends Controller
 {
     /**
@@ -23,13 +25,21 @@ class DemoController extends Controller
 
     /**
      * @Route("/hello/{name}", name="_demo_hello")
-     * @Template()
-     */
+    */
     public function helloAction($name)
     {
         return array('name' => $name);
     }
+    
+      public function holaAction()
+    {
+    $format = $this->get('request')->get('_format');
 
+    return $this->render(sprintf('AcmeDemoBundle:Demo:hello.pdf.twig', $format), array(
+            ));
+}
+
+        
     /**
      * @Route("/contact", name="_demo_contact")
      * @Template()

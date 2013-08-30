@@ -12,20 +12,24 @@ class FichaType extends AbstractType
     {
         $builder
             ->add('solicitado')
+            ->add('realizado')
+            ->add('fecha')
+            ->add('observaciones')
             ->add('dependencia')
             ->add('bien', 'collection', array(
                 'type'         => new BienType(),
                 'allow_add'    => true,
                 'by_reference' => false,))
-            ->add('trabajo',null)
-            ->add('componentes',null)
-            ->add('realizado')
-            ->add('fecha',
-                    'date', array(
-                      'input'  => 'datetime',
-                      'widget' => 'choice',
-                      'format' => 'dd MM yyyy'))
-            ->add('observaciones')
+            ->add('trabajos','entity', array(
+                  'class' => 'ProyectoTecnicoBundle:Trabajos',
+                  'empty_value' => true,
+                  'multiple' => true,
+                  'expanded' => true,))
+            ->add('componentes','entity', array(
+                  'class' => 'ProyectoTecnicoBundle:Componentes',
+                  'empty_value' => true,
+                  'multiple' => true,
+                  'expanded' => true,))
         ;
     }
 

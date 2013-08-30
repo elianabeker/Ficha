@@ -22,7 +22,11 @@
         "jordillonch/crud-generator": "dev-master",
         "friendsofsymfony/user-bundle": "*",
         "jordillonch/crud-generator": "dev-master",
-        "knplabs/knp-snappy-bundle": "dev-master"
+        "knplabs/knp-snappy-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "friendsofsymfony/jsrouting-bundle": "~1.1",
+        "psliwa/pdf-bundle": "dev-master",
+        "gergelypolonkai/tcpdfbundle": "*"
 
     },
     "scripts": {

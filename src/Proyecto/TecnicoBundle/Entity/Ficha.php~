@@ -4,6 +4,7 @@ namespace Proyecto\TecnicoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ficha
@@ -35,7 +36,7 @@ class Ficha
     private $dependencia;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Bien")
+     * @ORM\ManyToMany(targetEntity="Bien", cascade={"persist"})
      * @ORM\JoinTable(name="ficha_bien",
      *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="bien_id", referencedColumnName="id")}
@@ -43,21 +44,19 @@ class Ficha
      */
     private $bien;
 
-    /**
+     /** 
      * @ORM\ManyToMany(targetEntity="Trabajos")
-     * @ORM\JoinTable(name="ficha_trabajo",
-     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="trabajo_id", referencedColumnName="id")}
+     * @ORM\JoinTable(name="ficha_trabajos", 
+     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")}, 
+     *      inverseJoinColumns={@ORM\JoinColumn(name="trabajo_id", referencedColumnName="id")} 
      *      )
-     */
-    private $trabajo;
+     * @ORM\Column(nullable=true) 
+     */ 
+    private $trabajos;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Componentes")
-     * @ORM\JoinTable(name="ficha_componente",
-     *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="componente_id", referencedColumnName="id")}
-     *      )
+     * @ORM\OneToMany(targetEntity="Componentes", mappedBy="ficha")
+     * @ORM\Column(nullable=true)
      */
     private $componentes;
 
@@ -69,7 +68,7 @@ class Ficha
     private $realizado;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
      * @ORM\Column(name="Fecha", type="date")
      */
@@ -115,6 +114,7 @@ class Ficha
         return $this->solicitado;
     }
 
+
     /**
      * Set bien
      *
@@ -128,188 +128,8 @@ class Ficha
             $bienes->setFicha($this);
         }
     }
-
-    /**
-     * Get bien
-     *
-     * @return string 
-     */
-    public function getBien()
-    {
-        return $this->bien;
-    }
-
-    /**
-     * Set trabajo
-     *
-     * @param string $trabajo
-     * @return Ficha
-     */
-    public function setTrabajo($trabajo)
-    {
-        $this->trabajo = $trabajo;
-    
-        return $this;
-    }
-
-    /**
-     * Get trabajo
-     *
-     * @return string 
-     */
-    public function getTrabajo()
-    {
-        return $this->trabajo;
-    }
-
-    /**
-     * Set componentes
-     *
-     * @param string $componentes
-     * @return Ficha
-     */
-    public function setComponentes($componentes)
-    {
-        $this->componentes = $componentes;
-    
-        return $this;
-    }
-
-    /**
-     * Get componentes
-     *
-     * @return string 
-     */
-    public function getComponentes()
-    {
-        return $this->componentes;
-    }
-
-    /**
-     * Set realizado
-     *
-     * @param string $realizado
-     * @return Ficha
-     */
-    public function setRealizado($realizado)
-    {
-        $this->realizado = $realizado;
-    
-        return $this;
-    }
-
-    /**
-     * Get realizado
-     *
-     * @return string 
-     */
-    public function getRealizado()
-    {
-        return $this->realizado;
-    }
-
-    /**
-     * Set fecha
-     *
-     * @param \DateTime $fecha
-     * @return Ficha
-     */
-    public function setFecha($fecha)
-    {
-        $this->fecha = $fecha;
-    
-        return $this;
-    }
-
-    /**
-     * Get fecha
-     *
-     * @return \DateTime 
-     */
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->trabajo = new ArrayCollection();
-        $this->componentes = new ArrayCollection();
-        $this->bien = new ArrayCollection();
-    }
-    
-    /**
-     * Add trabajo
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Trabajos $trabajo
-     * @return Ficha
-     */
-    public function addTrabajo(\Proyecto\TecnicoBundle\Entity\Trabajos $trabajo)
-    {
-        $this->trabajo[] = $trabajo;
-    
-        return $this;
-    }
-
-    /**
-     * Remove trabajo
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Trabajos $trabajo
-     */
-    public function removeTrabajo(\Proyecto\TecnicoBundle\Entity\Trabajos $trabajo)
-    {
-        $this->trabajo->removeElement($trabajo);
-    }
-
-    /**
-     * Add componentes
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Componentes $componentes
-     * @return Ficha
-     */
-    public function addComponente(\Proyecto\TecnicoBundle\Entity\Componentes $componentes)
-    {
-        $this->componentes[] = $componentes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove componentes
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Componentes $componentes
-     */
-    public function removeComponente(\Proyecto\TecnicoBundle\Entity\Componentes $componentes)
-    {
-        $this->componentes->removeElement($componentes);
-    }
     
         /**
-     * Set dependencia
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
-     * @return Bien
-     */
-    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
-    {
-        $this->dependencia = $dependencia;
-    
-        return $this;
-    }
-
-    /**
-     * Get dependencia
-     *
-     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
-     */
-    public function getDependencia()
-    {
-        return $this->dependencia;
-    }
-
-    /**
      * Add bien
      *
      * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
@@ -332,36 +152,10 @@ class Ficha
         $this->bien->removeElement($bien);
     }
 
-    /**
-     * Get trabajos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTrabajos()
+    public function __construct()
     {
-        return $this->trabajos;
-    }
-
-    /**
-     * Set observaciones
-     *
-     * @param string $observaciones
-     * @return Ficha
-     */
-    public function setObservaciones($observaciones)
-    {
-        $this->observaciones = $observaciones;
-    
-        return $this;
-    }
-
-    /**
-     * Get observaciones
-     *
-     * @return string 
-     */
-    public function getObservaciones()
-    {
-        return $this->observaciones;
+        $this->trabajo = new ArrayCollection();
+        $this->componentes = new ArrayCollection();
+        $this->bien = new ArrayCollection();
     }
 }

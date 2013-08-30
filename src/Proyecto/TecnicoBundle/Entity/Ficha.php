@@ -36,6 +36,8 @@ class Ficha
     private $dependencia;
     
     /**
+     *
+     * @Assert\Valid
      * @ORM\ManyToMany(targetEntity="Bien", cascade={"persist"})
      * @ORM\JoinTable(name="ficha_bien",
      *      joinColumns={@ORM\JoinColumn(name="ficha_id", referencedColumnName="id")},
@@ -44,15 +46,12 @@ class Ficha
      */
     private $bien;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Trabajos", mappedBy="ficha")
-     * @ORM\Column(nullable=true)
-     */
-    private $trabajo;
+    /** @ORM\ManyToMany(targetEntity="Trabajos") 
+      */
+    private $trabajos;
 
     /**
-     * @ORM\OneToMany(targetEntity="Componentes", mappedBy="ficha")
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToMany(targetEntity="Componentes")
      */
     private $componentes;
 
@@ -121,49 +120,68 @@ class Ficha
         $this->bien = $bien;
     foreach ($bien as $bienes) {
             $bienes->setFicha($this);
-        }
-    }
-
-    /**
-     * Get bien
+    }}
+    
+        /**
+     * Add bien
      *
-     * @return string 
-     */
-    public function getBien()
-    {
-        return $this->bien;
-    }
-
-    /**
-     * Set trabajo
-     *
-     * @param string $trabajo
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
      * @return Ficha
      */
-    public function setTrabajo($trabajo)
+    public function addBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
     {
-        $this->trabajo = $trabajo;
+        $this->bien[] = $bien;
     
         return $this;
     }
 
     /**
-     * Get trabajo
+     * Remove bien
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
+     */
+    public function removeBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
+    {
+        $this->bien->removeElement($bien);
+    }
+
+    public function __construct()
+    {
+        $this->trabajos = new ArrayCollection();
+        $this->componentes = new ArrayCollection();
+        $this->bien = new ArrayCollection();
+    }
+
+    /**
+     * Set trabajos
+     *
+     * @param string $trabajos
+     * @return Ficha
+     */
+    public function setTrabajos($trabajos)
+    {
+        $this->trabajos = $trabajos;
+    
+        return $this;
+    }
+
+    /**
+     * Get trabajos
      *
      * @return string 
      */
-    public function getTrabajo()
+    public function getTrabajos()
     {
-        return $this->trabajo;
+        return $this->trabajos;
     }
 
     /**
      * Set componentes
      *
-     * @param Proyecto\TecnicoBundle\Entity\Componentes $componentes
+     * @param string $componentes
      * @return Ficha
      */
-    public function setComponentes(Componentes $componentes = null)
+    public function setComponentes($componentes)
     {
         $this->componentes = $componentes;
     
@@ -225,107 +243,6 @@ class Ficha
     {
         return $this->fecha;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->trabajo = new ArrayCollection();
-        $this->componentes = new ArrayCollection();
-        $this->bien = new ArrayCollection();
-    }
-    
-    /**
-     * Add trabajo
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Trabajos $trabajo
-     * @return Ficha
-     */
-    public function addTrabajo(\Proyecto\TecnicoBundle\Entity\Trabajos $trabajo)
-    {
-        $this->trabajo[] = $trabajo;
-    
-        return $this;
-    }
-
-    /**
-     * Remove trabajo
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Trabajos $trabajo
-     */
-    public function removeTrabajo(\Proyecto\TecnicoBundle\Entity\Trabajos $trabajo)
-    {
-        $this->trabajo->removeElement($trabajo);
-    }
-
-    /**
-     * Add componentes
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Componentes $componentes
-     * @return Ficha
-     */
-    public function addComponente(\Proyecto\TecnicoBundle\Entity\Componentes $componentes)
-    {
-        $this->componentes[] = $componentes;
-    
-        return $this;
-    }
-
-        /**
-     * Set dependencia
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
-     * @return Bien
-     */
-    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
-    {
-        $this->dependencia = $dependencia;
-    
-        return $this;
-    }
-
-    /**
-     * Get dependencia
-     *
-     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
-     */
-    public function getDependencia()
-    {
-        return $this->dependencia;
-    }
-
-    /**
-     * Add bien
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
-     * @return Ficha
-     */
-    public function addBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
-    {
-        $this->bien[] = $bien;
-    
-        return $this;
-    }
-
-    /**
-     * Remove bien
-     *
-     * @param \Proyecto\TecnicoBundle\Entity\Bien $bien
-     */
-    public function removeBien(\Proyecto\TecnicoBundle\Entity\Bien $bien)
-    {
-        $this->bien->removeElement($bien);
-    }
-
-    /**
-     * Get trabajos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTrabajos()
-    {
-        return $this->trabajos;
-    }
 
     /**
      * Set observaciones
@@ -348,5 +265,38 @@ class Ficha
     public function getObservaciones()
     {
         return $this->observaciones;
+    }
+
+    /**
+     * Set dependencia
+     *
+     * @param \Proyecto\TecnicoBundle\Entity\Dependencia $dependencia
+     * @return Ficha
+     */
+    public function setDependencia(\Proyecto\TecnicoBundle\Entity\Dependencia $dependencia = null)
+    {
+        $this->dependencia = $dependencia;
+    
+        return $this;
+    }
+
+    /**
+     * Get dependencia
+     *
+     * @return \Proyecto\TecnicoBundle\Entity\Dependencia 
+     */
+    public function getDependencia()
+    {
+        return $this->dependencia;
+    }
+
+    /**
+     * Get bien
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBien()
+    {
+        return $this->bien;
     }
 }

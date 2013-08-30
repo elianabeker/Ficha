@@ -49,8 +49,8 @@
     $('#nroPat').focusout(function(){
         $.ajax({
             type:'POST',
-            url: "{{path('ingreso_ajax')}}",
-              data:  { nroPat: $('#nroPat').val()}
+            url: '{{path("ingreso_ajax")}}',
+            data:  { nroPat: $('#nroPat').val()}
           }).done(function( msg ) {
             //alert( "Data Saved: " + msg );
            $('#Bien').attr('hidden',false);

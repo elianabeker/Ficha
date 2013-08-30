@@ -25,7 +25,9 @@ class AppKernel extends Kernel
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-         //   new Ps\PdfBundle\PsPdfBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Ps\PdfBundle\PsPdfBundle(),
 
             );
 

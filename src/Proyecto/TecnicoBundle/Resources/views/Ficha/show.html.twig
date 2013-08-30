@@ -21,18 +21,18 @@
                         <td>{{ bien.descripcion }}</td>
                     </tr>
                 {% endfor %}
-            </tr>   
+            </tr>  
             <th>Trabajos realizados</th>
-                   {% for trabajo in entity.trabajo %}
-                     <tr><td>{{ trabajo.descripcion }}</td></tr>
+                   {% for trabajos in entity.trabajos %}
+                     <tr><td>{{ trabajos.descripcion }}</td></tr>
                    {% endfor %}
-            </tr>
+            </tr> 
             <th>Componentes</th>
                    {% for componentes in entity.componentes %}
                      <tr><td>{{ componentes.descripcion }}</td></tr>
                    {% endfor %}
             </tr> 
-            <tr>
+             <tr>
                 <th>Realizado</th>
                 <td>{{ entity.realizado }}</td>
             </tr>
